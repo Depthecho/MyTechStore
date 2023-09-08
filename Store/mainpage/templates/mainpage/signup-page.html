@@ -11,20 +11,32 @@
 
             <!-- Display Form Errors -->
             {% if form.errors %}
-                <div class="signup-alert alert-danger">
-                    <ul>
-                        {% for error in form.non_field_errors %}
-                            <li>{{ error }}</li>
-                        {% endfor %}
-                        {% for field in form %}
-                            {% if field.errors %}
-                                {% for error in field.errors %}
-                                    <li>{{ error }}</li>
-                                {% endfor %}
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
+            <div class="signup-alert alert-danger">
+                <ul>
+                    {% for error in form.non_field_errors %}
+                    <li>{{ error }} <span class="close-alert">×</span></li>
+                    <script>
+                        // Close error messages when the close button is clicked
+                        $(document).on("click", ".close-alert", function () {
+                            $(this).parent("li").remove();
+                        });
+                    </script>
+                    {% endfor %}
+                    {% for field in form %}
+                    {% if field.errors %}
+                    {% for error in field.errors %}
+                    <li>{{ error }} <span class="close-alert">×</span></li>
+                    <script>
+                        // Close error messages when the close button is clicked
+                        $(document).on("click", ".close-alert", function () {
+                            $(this).parent("li").remove();
+                        });
+                    </script>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
             {% endif %}
 
             <!-- Username Field -->
@@ -64,7 +76,8 @@
 
             <!-- Confirm Password Field -->
             <div class="form-group">
-                <input type="password" id="id_password2" name="password2" class="input" placeholder="Confirm Password" required>
+                <input type="password" id="id_password2" name="password2" class="input" placeholder="Confirm Password"
+                       required>
                 <i class='bx bxs-lock-alt'></i>
             </div>
 

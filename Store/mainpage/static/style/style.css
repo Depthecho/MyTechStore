@@ -141,6 +141,8 @@ body{
     text-decoration: underline;
 }
 
+/*--errors--*/
+
 .signup-alert{
     margin-top: 10px;
     border: 2px solid red .2;
@@ -154,7 +156,13 @@ body{
     list-style: none;
 }
 
+.signup-alert span{
+    color: white;
+}
 
+.signup-alert span:hover{
+    cursor: pointer;
+}
 
 
 
