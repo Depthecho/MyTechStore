@@ -63,3 +63,5 @@ class RegistrationForm(UserCreationForm):
         # Check if the email address already exists
         if CustomUser.objects.filter(email=email).exists():
             raise forms.ValidationError('This email address is already registered. Please use a different one.')
+
+        return email
