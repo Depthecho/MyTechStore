@@ -295,6 +295,15 @@ body{
     color: var(--main-light-theme-color)
 }
 
+.login-container .forgot-password a{
+    color: var(--main-light-theme-color);
+    text-decoration: none;
+}
+
+.login-container .forgot-password a:hover{
+    text-decoration: underline;
+}
+
 .login-container .login-button{
     width: 100%;
     height: 45px;
@@ -508,6 +517,10 @@ body{
     color: var(--second-dark-theme-color)
 }
 
+.dark-mode .login-container .forgot-password a{
+    color: var(--second-dark-theme-color);
+    text-decoration: none;
+}
 
 
 
