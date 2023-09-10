@@ -1,3 +1,19 @@
 
 G
 Store/Store/settings.py,c\9\c90be0c9da085978c478e713e933e0071b4690d2
+G
+Store/mainpage/admin.py,6\9\696550a2d544afda0efdfcf685446f8ac7bb2881
+H
+Store/mainpage/models.py,4\0\40bf0e31f584c6c2443f1731cb977300be7d22c0
+[
++Store/mainpage/templates/mainpage/base.html,f\d\fdfbca667301854093168d08b4f30619de634059
+b
+2Store/mainpage/templates/mainpage/signup-page.html,e\8\e8861ea371c99e1875062a04ac206d07e9bcbe8a
+G
+Store/mainpage/forms.py,7\5\753fe33ea455081f0a57419a095298e5c5bf915e
+F
+Store/mainpage/urls.py,2\6\26d7608b39e4ffb359337c45184ff3648429cc02
+a
+1Store/mainpage/templates/mainpage/login-page.html,8\6\86f1cbc71fb9983385dc7f91dd835a7b4ad5de90
+G
+Store/mainpage/views.py,b\5\b562fd1acff207e5529862172d6fc09dcedd8816

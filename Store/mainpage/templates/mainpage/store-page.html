@@ -1,10 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'mainpage/base.html' %}
+{% load static %}
+{% block title %}Store{% endblock %}
 
-</body>
-</html>
+{% block content %}
+<div class="store-page-body">
+        <header class="main-header">
+            <div class="header-container">
+                <div class="logo">
+                    <a href="{% url 'store-page' %}">Depthecho</a>
+                </div>
+                <div class="search">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search-alt-2'></i>
+                </div>
+                <nav class="main-nav">
+                    <ul class="collapsed-menu">
+                        <li class="collapsed-menu-li collapsed-menu-active"><a href="/"><i class='bx bx-home'></i><br><p class="text">Store</p></a></li>
+                        <li class="collapsed-menu-li"><a href="/cart"><i class='bx bx-cart'></i><br><p class="text">Cart</p></a></li>
+                        <li class="collapsed-menu-li"><a href="/orders"><i class='bx bx-notepad'></i><br><p class="text">Orders</p></a></li>
+                        <li class="collapsed-menu-li"><a href="/favorites"><i class='bx bx-star' ></i><br><p class="text">Favorite</p></a></li>
+                        <li class="dropdown">
+                            <a href="#" id="burger-button" onclick="toggleDropdown()">☰</a>
+                            <div class="dropdown-menu" id="dropdownMenu">
+                                <ul>
+                                    <li class="dropdown-menu-li dropdown-menu-afterline"><a href="">Profile</a></li>
+                                    <li class="dropdown-menu-li dropdown-menu-afterline"><a href="">Settings</a></li>
+                                    <li class="dropdown-menu-li" id="dropdown-menu-logout"><a href="{% url 'log-out' %}">Log Out</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+    <script>
+        // Function to toggle dropdown menu visibility
+        function toggleDropdown() {
+            var dropdownMenu = document.getElementById("dropdownMenu");
+            var dropdownMenuButton = document.getElementById("burger-button");
+            if (dropdownMenu.style.display === "block") {
+                dropdownMenu.style.display = "none";
+                dropdownMenuButton.style.color = "var(--main-dark-theme-color)";
+            } else {
+                dropdownMenu.style.display = "block";
+                dropdownMenuButton.style.color = "var(--main-dark-theme-color)";
+            }
+        }
+    </script>
+</div>
+{% endblock %}

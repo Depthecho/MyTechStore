@@ -1,5 +1,7 @@
 :root{
     --main-light-theme-color: #E1805E;
+    --second-light-theme-color: #C47318;
+    --third-light-theme-color: #BB8C4A;
     --bg-light-theme-color: #FCF2CC;
     --light-theme-text-color: black;
     --bg-light-theme: url('/static/images/BG_light.jpg');
@@ -20,7 +22,7 @@
 
 /*---------------LIGHT THEME---------------*/
 body{
-    background-image: var(--bg-light-theme);
+    background-image: var(--bg-light-theme-color);
     background-size: cover;
     background-position: center;
 }
@@ -28,6 +30,10 @@ body{
 /*----------SIGN UP----------*/
 
 .signup-body{
+    background-image: var(--bg-light-theme);
+    background-size: cover;
+    background-position: center;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,6 +105,29 @@ body{
 
     font-size: 20px;
     color: var(--main-light-theme-color)
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    color: var(--main-light-theme-color);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 330px;
+    z-index: 1000;
+    list-style: none;
+}
+
+.tooltip-ul{
+    color: var(--main-light-theme-color);
+    list-style: none;
+}
+
+.form-group {
+    position: relative;
 }
 
 .signup-container .remember{
@@ -222,6 +251,10 @@ body{
 
 /*----------LOG IN----------*/
 .login-body{
+    background-image: var(--bg-light-theme);
+    background-size: cover;
+    background-position: center;
+
     display: flex;
 
     justify-content: center;
@@ -332,7 +365,7 @@ body{
 
     color: white;
 
-    border: 2px solid white;
+    border: 2px solid var(--main-light-theme-color);
 }
 
 .login-container .dont-have-account{
@@ -398,6 +431,217 @@ body{
     cursor: pointer;
 }
 
+/*----------STORE PAGE----------*/
+.store-page-body{
+    background-color: var(--bg-light-theme-color);
+    background-size: cover;
+    background-size: cover;
+}
+/*--header--*/
+.main-header {
+    background-color: var(--main-light-theme-color);
+    color: #fff;
+    height: 70px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-container{
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo a {
+    color: var(--main-dark-theme-color);
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.search{
+    width: 300px;
+    position: relative;
+    border-radius: 20px;
+}
+
+.search input {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    width: 300px;
+    font-size: 16px;
+}
+
+.search i{
+    position: absolute;
+    top: 8px;
+    right: 5px;
+
+    color: var(--light-theme-text-color)
+}
+
+.main-nav{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.main-nav ul li {
+    text-align: center;
+
+    margin-right: 30px;
+    
+
+    position: relative;
+}
+
+.main-nav ul li.collapsed-menu-li{
+    position: relative;
+    height: 70px;
+    width: 70px;
+    z-index: 1;
+}
+
+.main-nav ul li a {
+    color: var(--main-dark-theme-color);
+    text-decoration: none;
+}
+
+.main-nav ul li.collapsed-menu-li a{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
+
+.main-nav ul li.collapsed-menu-li a i{
+    position: relative;
+    display: block;
+    line-height: 75px;
+    font-size: 1.5em;
+    text-align: center;
+    transition: .5s;
+    color: var(--main-dark-theme-color)
+}
+
+.main-nav ul li.collapsed-menu-li a:hover, .main-nav ul li.collapsed-menu-li a:active{
+    text-decoration: underline;
+}
+
+.main-nav ul li.collapsed-menu-li:hover a i{
+    transform: translateY(-25px);
+}
+
+.main-nav ul li.collapsed-menu-li a .text{
+    position: absolute;
+    color: var(--main-dark-theme-color);
+    font-weight: 400;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.main-nav ul li.collapsed-menu-li:hover a .text{
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+
+.dropdown-menu {
+    position: absolute;
+
+    width: 140px;
+    height: 100px;
+
+    top: 30px;
+    right: -70px;
+    padding: 0;
+
+    text-align: center;
+    color: var(--light-theme-text-color);
+    
+    display: none;
+
+    border: 2px solid var(--main-light-theme-color);
+    border-radius: 5px;
+
+    background-color: var(--third-light-theme-color);
+
+    list-style: none;
+    z-index: 2;
+}
+
+.dropdown-menu-afterline::after{
+    position: absolute;
+
+    z-index: 3;
+
+    left: -30px;
+
+    margin-top: 3px;
+
+    display: block;
+
+    content: '';
+
+    width: 150px;
+    height: 1px;
+
+    color: var(--main-dark-theme-color);
+
+    border-top: 1px solid var(--main-dark-theme-color);
+}
+
+#dropdown-menu-logout a{
+    color: red
+}
+
+.dropdown{
+    margin-left: 30px;
+}
+
+.dropdown ul {
+     flex-direction: column;
+     text-align: center;
+}
+
+.dropdown ul li{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.dropdown ul li a:hover, .dropdown ul li a:hover{
+    margin-top: 10px;
+    text-align: center;
+    color: var(--main-light-theme-color);
+    text-decoration: underline;
+}
+
+#burger-button:active{
+    color: var(--main-light-theme-color)
+}
+
 
 
 
@@ -445,10 +689,11 @@ body{
 /*---------------DARK THEME---------------*/
 /*----------Sign Up----------*/
 .dark-mode{
-    background-image: var(--bg-dark-theme);
     color: white;
+}
 
-    background-color: black;
+.dark-mode .signup-body{
+    background-image: var(--bg-dark-theme);
 }
 
 .dark-mode h1{
@@ -485,9 +730,8 @@ body{
 }
 
 /*----------Log In----------*/
-.dark-mode{
+.dark-mode .login-body{
     background-image: var(--bg-dark-theme);
-    color: white;
 }
 
 .dark-mode h1{
@@ -522,35 +766,11 @@ body{
     text-decoration: none;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.tooltip {
-    display: none;
-    position: absolute;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    color: #333;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: 350px;
-    z-index: 1000;
+.dark-mode .tooltip{
+    background-color: var(--bg-dark-theme-color);
+    color: var(--second-dark-theme-color);
 }
 
-.form-group {
-    position: relative;
+.dark-mode .tooltip-ul{
+    color: var(--second-dark-theme-color)
 }

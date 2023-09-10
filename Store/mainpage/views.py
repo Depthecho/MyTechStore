@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 
@@ -35,6 +35,11 @@ def login_page(request):
     else:
         error_message = None
     return render(request, 'mainpage/login-page.html', {'error_message': error_message})
+
+
+def logout_page(request):
+    logout(request)
+    return redirect('login-page')
 
 
 def store_page(request):
