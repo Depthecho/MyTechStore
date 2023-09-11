@@ -17,3 +17,5 @@ a
 1Store/mainpage/templates/mainpage/login-page.html,8\6\86f1cbc71fb9983385dc7f91dd835a7b4ad5de90
 G
 Store/mainpage/views.py,b\5\b562fd1acff207e5529862172d6fc09dcedd8816
+a
+1Store/mainpage/templates/mainpage/store-page.html,3\e\3e16f2256233c9dcb66a2fe0ba8349f833f743ce

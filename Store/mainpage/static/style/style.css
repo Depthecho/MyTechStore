@@ -1,7 +1,7 @@
 :root{
     --main-light-theme-color: #E1805E;
     --second-light-theme-color: #C47318;
-    --third-light-theme-color: #BB8C4A;
+    --third-light-theme-color: #f1df8a;
     --bg-light-theme-color: #FCF2CC;
     --light-theme-text-color: black;
     --bg-light-theme: url('/static/images/BG_light.jpg');
@@ -547,7 +547,7 @@ body{
     text-decoration: underline;
 }
 
-.main-nav ul li.collapsed-menu-li:hover a i{
+.main-nav ul li.collapsed-menu-li:hover a i.bx{
     transform: translateY(-25px);
 }
 
@@ -572,70 +572,90 @@ body{
     position: absolute;
 
     width: 140px;
-    height: 100px;
+    height: 85px;
 
     top: 30px;
     right: -70px;
     padding: 0;
 
     text-align: center;
-    color: var(--light-theme-text-color);
+    color: var(--bg-dark-theme-color);
     
     display: none;
 
     border: 2px solid var(--main-light-theme-color);
     border-radius: 5px;
 
-    background-color: var(--third-light-theme-color);
+    background-color: var(--main-dark-theme-color);
 
     list-style: none;
     z-index: 2;
 }
 
-.dropdown-menu-afterline::after{
+.dropdown-menu ul li a{
+    display: block;
+    color: var(--bg-dark-theme-color);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+.dropdown ul {
+    width: 100%;
+
+    flex-direction: column;
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.dropdown ul li{
+    width: 100%;
+
+    margin: 0;
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.dropdown ul li:nth-child(1):after{
     position: absolute;
 
     z-index: 3;
-
-    left: -30px;
-
-    margin-top: 3px;
 
     display: block;
 
     content: '';
 
-    width: 150px;
-    height: 1px;
+    width: 100%;
 
-    color: var(--main-dark-theme-color);
-
-    border-top: 1px solid var(--main-dark-theme-color);
+    border-top: 2px solid var(--main-light-theme-color);
 }
 
-#dropdown-menu-logout a{
-    color: red
+.dropdown ul li:nth-child(2):after{
+    position: absolute;
+
+    z-index: 3;
+
+    display: block;
+
+    content: '';
+
+    width: 100%;
+
+    border-top: 2px solid var(--main-light-theme-color);
 }
 
-.dropdown{
-    margin-left: 30px;
+.dropdown ul li:hover{
+    transition: 0.5s;
+    background-color: var(--main-light-theme-color);
 }
 
-.dropdown ul {
-     flex-direction: column;
-     text-align: center;
-}
 
-.dropdown ul li{
-    margin-top: 10px;
+.dropdown ul li:hover a, .dropdown ul li:active a{
     text-align: center;
-}
-
-.dropdown ul li a:hover, .dropdown ul li a:hover{
-    margin-top: 10px;
-    text-align: center;
-    color: var(--main-light-theme-color);
-    text-decoration: underline;
+    color: var(--light-theme-text-color);
 }
 
 #burger-button:active{
@@ -745,6 +765,10 @@ body{
 .dark-mode .login-container .login-button{
     color: white;
     background-color: var(--second-dark-theme-color);
+}
+
+.dark-mode .login-container .forgot-password a:hover{
+    text-decoration: underline;
 }
 
 .dark-mode i{
