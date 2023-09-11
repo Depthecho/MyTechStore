@@ -6,9 +6,9 @@
     --light-theme-text-color: black;
     --bg-light-theme: url('/static/images/BG_light.jpg');
     --bg-dark-theme: url('/static/images/BG_dark.jpg');
-    --main-dark-theme-color: white;
-    --second-dark-theme-color: #9C67E0;
+    --main-dark-theme-color: #9C67E0;
     --bg-dark-theme-color: #515252;
+    --dark-theme-text-color: white;
 }
 
 *{
@@ -166,7 +166,7 @@ body{
     cursor: pointer;
 
     font-size: 16px;
-    color: var(--main-dark-theme-color);
+    color: var(--dark-theme-text-color);
     font-weight: 600;
 
     background-color: var(--main-light-theme-color);
@@ -356,7 +356,7 @@ body{
     font-weight: 600;
 
     background-color: var(--main-light-theme-color);
-    color: var(--main-dark-theme-color);
+    color: var(--dark-theme-text-color);
     
 }
 
@@ -457,7 +457,7 @@ body{
 }
 
 .logo a {
-    color: var(--main-dark-theme-color);
+    color: var(--dark-theme-text-color);
     text-decoration: none;
     font-size: 32px;
     font-weight: bold;
@@ -518,7 +518,7 @@ body{
 }
 
 .main-nav ul li a {
-    color: var(--main-dark-theme-color);
+    color: var(--dark-theme-text-color);
     text-decoration: none;
 }
 
@@ -540,7 +540,7 @@ body{
     font-size: 1.5em;
     text-align: center;
     transition: .5s;
-    color: var(--main-dark-theme-color)
+    color: var(--dark-theme-text-color);
 }
 
 .main-nav ul li.collapsed-menu-li a:hover, .main-nav ul li.collapsed-menu-li a:active{
@@ -553,7 +553,7 @@ body{
 
 .main-nav ul li.collapsed-menu-li a .text{
     position: absolute;
-    color: var(--main-dark-theme-color);
+    color: var(--dark-theme-text-color);
     font-weight: 400;
     font-size: 0.75em;
     letter-spacing: 0.05em;
@@ -586,7 +586,7 @@ body{
     border: 2px solid var(--main-light-theme-color);
     border-radius: 5px;
 
-    background-color: var(--main-dark-theme-color);
+    background-color: var(--dark-theme-text-color);
 
     list-style: none;
     z-index: 2;
@@ -717,20 +717,20 @@ body{
 }
 
 .dark-mode h1{
-    color: var(--second-dark-theme-color)
+    color: var(--main-dark-theme-color)
 }
 
 .dark-mode .signup-container{
-    color: var(--second-dark-theme-color)
+    color: var(--main-dark-theme-color)
 }
 
 .dark-mode .signup-container .signup-button{
     color: white;
-    background-color: var(--second-dark-theme-color);
+    background-color: var(--main-dark-theme-color);
 }
 
 .dark-mode i{
-    color: var(--second-dark-theme-color)
+    color: var(--main-dark-theme-color)
 }
 
 .dark-mode .signup-container .signup-button:hover{
@@ -738,15 +738,15 @@ body{
 
     background-color: transparent;
 
-    border: 2px solid var(--second-dark-theme-color);
+    border: 2px solid var(--main-dark-theme-color);
 }
 
 .dark-mode .remember{
-        color: var(--second-dark-theme-color)
+        color: var(--main-dark-theme-color)
 }
 
 .dark-mode .already-registered p{
-    color: var(--second-dark-theme-color)
+    color: var(--main-dark-theme-color)
 }
 
 /*----------Log In----------*/
@@ -755,16 +755,16 @@ body{
 }
 
 .dark-mode h1{
-    color: var(--second-dark-theme-color)
+    color: var(--main-dark-theme-color)
 }
 
 .dark-mode .login-container{
-    color: var(--second-dark-theme-color)
+    color: var(--main-dark-theme-color)
 }
 
 .dark-mode .login-container .login-button{
     color: white;
-    background-color: var(--second-dark-theme-color);
+    background-color: var(--main-dark-theme-color);
 }
 
 .dark-mode .login-container .forgot-password a:hover{
@@ -772,29 +772,29 @@ body{
 }
 
 .dark-mode i{
-    color: var(--second-dark-theme-color)
+    color: var(--main-dark-theme-color)
 }
 
 .dark-mode .login-container .login-button:hover{
     cursor: pointer;
     background-color: transparent;
-    border: 2px solid var(--second-dark-theme-color);
+    border: 2px solid var(--main-dark-theme-color);
 }
 
 .dark-mode .dont-have-account p{
-    color: var(--second-dark-theme-color)
+    color: var(--main-dark-theme-color)
 }
 
 .dark-mode .login-container .forgot-password a{
-    color: var(--second-dark-theme-color);
+    color: var(--main-dark-theme-color);
     text-decoration: none;
 }
 
 .dark-mode .tooltip{
     background-color: var(--bg-dark-theme-color);
-    color: var(--second-dark-theme-color);
+    color: var(--main-dark-theme-color);
 }
 
 .dark-mode .tooltip-ul{
-    color: var(--second-dark-theme-color)
+    color: var(--main-dark-theme-color)
 }
