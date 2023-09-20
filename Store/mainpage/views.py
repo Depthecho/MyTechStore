@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
+from .models import Product
 
 
 def signup_page(request):
@@ -43,4 +44,7 @@ def logout_page(request):
 
 
 def store_page(request):
-    return render(request, 'mainpage/store-page.html')
+    products = Product.objects.all()
+
+    context = {'products': products}
+    return render(request, 'mainpage/store-page.html', context)
