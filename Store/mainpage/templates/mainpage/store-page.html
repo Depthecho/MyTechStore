@@ -28,7 +28,7 @@
                         <p class="text">Favorite</p>
                     </a></li>
                     <li class="dropdown">
-                        <a href="#" id="burger-button" onclick="toggleDropdown()">☰</a>
+                        <a href="#" id="burger-button" onclick="toggleDropdown()"><i class='bx bx-menu'></i></a>
                         <div class="dropdown-menu" id="dropdownMenu">
                             <ul>
                                 <li class="dropdown-menu-li dropdown-menu-afterline"><a href="">Profile</a></li>
@@ -65,21 +65,70 @@
 
     <section class="store-page-main">
         <div class="store-page-content">
+            <div class="sort-products">
+                <form method="get" action="{% url 'store-page' %}">
+                    <label for="price_min">Min Price:</label>
+                    <input type="number" name="price_min" id="price_min" step="1" placeholder="Enter your min. price">
+                    <label for="price_max">Max Price:</label>
+                    <input type="number" name="price_max" id="price_max" step="1" placeholder="Enter your max. price">
+                    <button type="submit" class="apply-sort">Apply</button>
+                    <select name="sort_by" class="sort-by-select">
+
+                        <option value="">Sort By</option>
+                        <option value="price_low">Price Low to High</option>
+                        <option value="price_high">Price High to Low</option>
+                    </select>
+                    <button type="submit" class="apply-sort">Apply</button>
+                </form>
+                <div class="sort-by-category">
+                    <form method="get" action="{% url 'store-page' %}">
+                        <label for="category">Sort by Category:</label>
+                        <select id="category" name="category">
+                            <option value="all">All Categories</option>
+                            {% for cat in categories %}
+                            <option value="{{ cat.name }}">{{ cat.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit">Apply</button>
+                    </form>
+                </div>
+            </div>
             <div class="store-page-container">
+                <div class="products-header">
+                    <div class="items-per-page">
+                        <label for="itemsPerPage">Items per Page:</label>
+                        <select id="itemsPerPage" name="itemsPerPage">
+                            <option value="12">12</option>
+                            <option value="18">18</option>
+                            <option value="24">24</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                    <div class="sort-by-square type-of-view-products">
+                        <i class='bx bxs-grid'></i>
+                    </div>
+                    <div class="sort-by-string type-of-view-products">
+                        <i class='bx bx-menu'></i>
+                    </div>
+                </div>
                 {% for product in products %}
                 <div class="products">
                     <h2>{{ product.name }}</h2>
                     {% if product.image %}
                     <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <i class='favorite-good bx bx-star'></i>
                     {% endif %}
-                    <p>Description: {{ product.description|truncatechars:20 }}</p>
-                    <p>Category: {{ product.category }}</p>
-                    <p>Price: ${{ product.price }}</p>
+                    <p><b>Category:</b> {{ product.category }}</p>
+                    <p><b>Price:</b> ${{ product.price }}</p>
+                    {% if product.quantity > 0 %}
+                    <button><a href="#" class="buy-button">Buy</a></button>
+                    {% else %}
+                    <p class="out-of-stock">Out of Stock</p>
+                    {% endif %}
                 </div>
                 {% endfor %}
             </div>
         </div>
     </section>
-
 </div>
 {% endblock %}
