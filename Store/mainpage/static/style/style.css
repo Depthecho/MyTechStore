@@ -888,6 +888,8 @@ body{
 }
 
 .products:hover i{
+    cursor: pointer;
+    
     display: block;
 }
 

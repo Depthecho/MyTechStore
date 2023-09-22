@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
@@ -68,3 +69,33 @@ def store_page(request):
 
     context = {'products': products, 'categories': categories}
     return render(request, 'mainpage/store-page.html', context)
+
+
+def add_to_favorite(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    user = request.user
+
+    # Добавляем продукт в избранное пользователя
+    user.favorite_products.add(product)
+
+    return redirect('store-page')
+
+
+def remove_from_favorite(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    user = request.user
+
+    # Удаляем продукт из избранного пользователя
+    user.favorite_products.remove(product)
+
+    return redirect('store-page')
+
+
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    user = request.user
+
+    # Добавляем продукт в корзину пользователя
+    user.cart_products.add(product)
+
+    return redirect('store-page')

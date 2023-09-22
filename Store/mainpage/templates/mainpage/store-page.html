@@ -116,12 +116,16 @@
                     <h2>{{ product.name }}</h2>
                     {% if product.image %}
                     <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                    <i class='favorite-good bx bx-star'></i>
+                    {% endif %}
+                    {% if product in request.user.favorite_products.all %}
+                    <a href="{% url 'remove-from-favorite' product.id %}"><i class="favorite-good bx bxs-star"></i></a>
+                    {% else %}
+                    <a href="{% url 'add-to-favorite' product.id %}"><i class="favorite-good bx bx-star"></i></a>
                     {% endif %}
                     <p><b>Category:</b> {{ product.category }}</p>
                     <p><b>Price:</b> ${{ product.price }}</p>
                     {% if product.quantity > 0 %}
-                    <button><a href="#" class="buy-button">Buy</a></button>
+                    <button><a href="{% url 'add-to-cart' product.id %}" class="buy-button">Buy</a></button>
                     {% else %}
                     <p class="out-of-stock">Out of Stock</p>
                     {% endif %}
