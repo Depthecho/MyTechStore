@@ -1,6 +1,5 @@
 from django.urls import path, include
 from . import views
-from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
@@ -13,6 +12,5 @@ urlpatterns = [
     path('log-out/', views.logout_page, name='log-out'),
     path('add-to-favorite/<int:product_id>/', views.add_to_favorite, name='add-to-favorite'),
     path('remove-from-favorite/<int:product_id>/', views.remove_from_favorite, name='remove-from-favorite'),
-    path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add-to-cart'),
 ]
 

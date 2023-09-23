@@ -91,11 +91,3 @@ def remove_from_favorite(request, product_id):
     return redirect('store-page')
 
 
-def add_to_cart(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    user = request.user
-
-    # Добавляем продукт в корзину пользователя
-    user.cart_products.add(product)
-
-    return redirect('store-page')

@@ -1,0 +1,38 @@
+{% extends 'mainpage/base.html' %}
+{% load static %}
+{% block title %}Store{% endblock %}
+
+{% block content %}
+<div class="cart-page-body">
+
+    <div class="empty-space">
+        <h1 class="store-header">
+            Cart
+        </h1>
+    </div>
+
+    <section class="cart-page-main">
+        <div class="cart-page-content">
+            <div class="cart-page-container">
+                {% if cart_products %}
+                {% for product in cart_products %}
+                <div class="products">
+                    <h2>{{ product.name }}</h2>
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% endif %}
+                    <p><b>Category:</b> {{ product.category }}</p>
+                    <p><b>Price:</b> ${{ product.price }}</p>
+                    <button><a href="#" class="remove-from-cart-button">Remove from Cart</a></button>
+                </div>
+                {% endfor %}
+
+                {% else %}
+                <p>Your cart is empty.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}
