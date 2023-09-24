@@ -21,3 +21,11 @@ a
 1Store/mainpage/templates/mainpage/store-page.html,3\e\3e16f2256233c9dcb66a2fe0ba8349f833f743ce
 C
 Store/Store/urls.py,0\4\046f13d301854de57d6aa5c55da207321a2c0352
+B
+Store/cart/urls.py,4\5\458bd48b06939d0642917c71866e57419967b546
+B
+Store/cart/apps.py,b\d\bd2fe34f11b70ffb3e70e04ad1f1008ab4e9407b
+X
+(Store/cart/templates/cart/cart-page.html,5\b\5bd2fe70125b3457c9a9295a84596988019f23ed
+C
+Store/cart/views.py,9\e\9ea37ce3b9a6caa7b19344c110e9ef2bcdb87f27

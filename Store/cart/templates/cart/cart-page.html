@@ -1,8 +1,61 @@
 {% extends 'mainpage/base.html' %}
 {% load static %}
+{% load cart_tags %}
 {% block title %}Store{% endblock %}
 
 {% block content %}
+<header class="main-header">
+    <div class="header-container">
+        <div class="logo">
+            <a href="{% url 'store-page' %}">Depthecho</a>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search...">
+            <i class='bx bx-search-alt-2'></i>
+        </div>
+        <nav class="main-nav">
+            <ul class="collapsed-menu">
+                <li class="collapsed-menu-li collapsed-menu-active"><a href="/"><i class='bx bx-home'></i><br>
+                    <p class="text">Store</p>
+                </a></li>
+                <li class="collapsed-menu-li"><a href="{% url 'cart' %}"><i class='bx bx-cart'></i><br>
+                    <p class="text">Cart</p>
+                </a></li>
+                <li class="collapsed-menu-li"><a href="/orders"><i class='bx bx-notepad'></i><br>
+                    <p class="text">Orders</p>
+                </a></li>
+                <li class="collapsed-menu-li"><a href="/favorites"><i class='bx bx-star'></i><br>
+                    <p class="text">Favorite</p>
+                </a></li>
+                <li class="dropdown">
+                    <a href="#" id="burger-button" onclick="toggleDropdown()"><i class='bx bx-menu'></i></a>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <ul>
+                            <li class="dropdown-menu-li dropdown-menu-afterline"><a href="">Profile</a></li>
+                            <li class="dropdown-menu-li dropdown-menu-afterline"><a href="">Settings</a></li>
+                            <li class="dropdown-menu-li" id="dropdown-menu-logout"><a href="{% url 'log-out' %}">Log
+                                Out</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <script>
+        // Function to toggle dropdown menu visibility
+        function toggleDropdown() {
+            var dropdownMenu = document.getElementById("dropdownMenu");
+            var dropdownMenuButton = document.getElementById("burger-button");
+            if (dropdownMenu.style.display === "block") {
+                dropdownMenu.style.display = "none";
+                dropdownMenuButton.style.color = "var(white)";
+            } else {
+                dropdownMenu.style.display = "block";
+                dropdownMenuButton.style.color = "var(white)";
+            }
+        }
+    </script>
+</header>
 <div class="cart-page-body">
 
     <div class="empty-space">
@@ -14,21 +67,35 @@
     <section class="cart-page-main">
         <div class="cart-page-content">
             <div class="cart-page-container">
-                {% if cart_products %}
-                {% for product in cart_products %}
+                {% if cart_items %}
+                {% for cart_item in cart_items %}
                 <div class="products">
-                    <h2>{{ product.name }}</h2>
-                    {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <h2>{{ cart_item.product.name }}</h2>
+                    {% if cart_item.product.image %}
+                    <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.name }}">
                     {% endif %}
-                    <p><b>Category:</b> {{ product.category }}</p>
-                    <p><b>Price:</b> ${{ product.price }}</p>
-                    <button><a href="#" class="remove-from-cart-button">Remove from Cart</a></button>
+                    <p><b>Category:</b> {{ cart_item.product.category }}</p>
+                    <p><b>Price:</b> ${{ cart_item.product.price }}</p>
+                    <p><b>Quantity:</b> {{ cart_item.quantity }}</p>
+                    <form action="{% url 'remove-from-cart' cart_item.product.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="remove-from-cart-button">Remove from Cart</button>
+                    </form>
                 </div>
                 {% endfor %}
 
                 {% else %}
                 <p>Your cart is empty.</p>
+                {% endif %}
+            </div>
+            <div class="cart-purchase">
+                {% if cart_items %}
+                <p><b>Total Items:</b> {{ total_quantity }}</p>
+                <p><b>Total Price:</b> ${{ cart_items|total_price }}</p>
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="purchase-button">Purchase All</button>
+                </form>
                 {% endif %}
             </div>
         </div>
