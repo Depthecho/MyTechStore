@@ -1,7 +1,7 @@
 {% extends 'mainpage/base.html' %}
 {% load static %}
-{% load cart_tags %}
-{% block title %}Store{% endblock %}
+
+{% block title %}Favorite List{% endblock %}
 
 {% block content %}
 <header class="main-header">
@@ -57,51 +57,41 @@
         }
     </script>
 </header>
-<div class="cart-page-body">
+<div class="store-page-body">
 
-    <div class="empty-space">
-        <h1 class="store-header">
-            Cart
-        </h1>
-    </div>
+    <div class="favorite-list-body">
+        <div class="empty-space">
+            <h1 class="store-header">
+                Favorite List
+            </h1>
+        </div>
 
-    <section class="cart-page-main">
-        <div class="cart-page-content">
-            <div class="cart-page-container">
-                {% if cart_items %}
-                {% for cart_item in cart_items %}
-                <div class="products">
-                    <h2>{{ cart_item.product.name }}</h2>
-                    {% if cart_item.product.image %}
-                    <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.name }}">
+        <section class="favorite-list-main">
+            <div class="favorite-list-content">
+                <div class="favorite-list-container">
+                    {% if favorite_products %}
+                    {% for product in favorite_products %}
+                    <div class="products">
+                        {% if product in request.user.favorite_products.all %}
+                        <a href="{% url 'remove-from-favorite-fav' product.id %}"><i class="favorite-good bx bxs-star"></i></a>
+                        {% else %}
+                        <a href="{% url 'add-to-favorite' product.id %}"><i class="favorite-good bx bx-star"></i></a>
+                        {% endif %}
+                        <h2>{{ product.name }}</h2>
+                        {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% endif %}
+                        <p><b>Category:</b> {{ product.category }}</p>
+                        <p><b>Price:</b> ${{ product.price }}</p>
+                        <button><a href="{% url 'add-to-cart' product.id %}">Add to Cart</a></button>
+                        <button><a href="{% url 'remove-from-favorite-fav' product.id %}">Remove from Favorite</a></button>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p class="fav-list-empty">Your favorite list is empty.</p>
                     {% endif %}
-                    <p><b>Category:</b> {{ cart_item.product.category }}</p>
-                    <p><b>Price:</b> ${{ cart_item.product.price }}</p>
-                    <p><b>Quantity:</b> {{ cart_item.quantity }}</p>
-                    <form action="{% url 'remove-from-cart' cart_item.product.id %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="remove-from-cart-button">Remove from Cart</button>
-                    </form>
                 </div>
-                {% endfor %}
             </div>
-            <div class="cart-purchase">
-                {% if cart_items %}
-                <p><b>Total Items:</b> {{ total_quantity }}</p>
-                <p><b>Total Price:</b> ${{ cart_items|total_price }}</p>
-                <form action="#" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="purchase-button">Purchase All</button>
-                </form>
-                {% endif %}
-            </div>
-
-            {% else %}
-            <p class="cart-empty">Your cart is empty.</p>
-        {% endif %}
-
-</div>
-</section>
-</div>
-
-{% endblock %}
+        </section>
+    </div>
+    {% endblock %}

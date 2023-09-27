@@ -4,7 +4,7 @@
 
 {% block content %}
 <header class="main-header">
-    <div class="header-container">
+     <div class="header-container">
         <div class="logo">
             <a href="{% url 'store-page' %}">Depthecho</a>
         </div>
@@ -14,7 +14,7 @@
         </div>
         <nav class="main-nav">
             <ul class="collapsed-menu">
-                <li class="collapsed-menu-li collapsed-menu-active"><a href="/"><i class='bx bx-home'></i><br>
+                <li class="collapsed-menu-li collapsed-menu-active"><a href="{% url 'store-page' %}"><i class='bx bx-home'></i><br>
                     <p class="text">Store</p>
                 </a></li>
                 <li class="collapsed-menu-li"><a href="{% url 'cart' %}"><i class='bx bx-cart'></i><br>
@@ -23,7 +23,7 @@
                 <li class="collapsed-menu-li"><a href="/orders"><i class='bx bx-notepad'></i><br>
                     <p class="text">Orders</p>
                 </a></li>
-                <li class="collapsed-menu-li"><a href="/favorites"><i class='bx bx-star'></i><br>
+                <li class="collapsed-menu-li"><a href="{% url 'favorite-list' %}"><i class='bx bx-star'></i><br>
                     <p class="text">Favorite</p>
                 </a></li>
                 <li class="dropdown">

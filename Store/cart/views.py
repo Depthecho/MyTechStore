@@ -1,13 +1,12 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import Sum
-from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
-from mainpage.forms import RegistrationForm
 from mainpage.models import Product, Category
 from .models import CartItem
 
 
+@login_required(login_url='login-page')
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     user = request.user
@@ -23,12 +22,14 @@ def add_to_cart(request, product_id):
     return redirect('store-page')
 
 
+@login_required(login_url='login-page')
 def cart_page(request):
     cart_items = CartItem.objects.filter(user=request.user)
     total_quantity = cart_items.aggregate(total_quantity=Sum('quantity'))['total_quantity']
     return render(request, 'cart/cart-page.html', {'cart_items': cart_items, 'total_quantity': total_quantity})
 
 
+@login_required(login_url='login-page')
 def remove_from_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     user = request.user

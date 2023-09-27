@@ -89,5 +89,3 @@ def remove_from_favorite(request, product_id):
     user.favorite_products.remove(product)
 
     return redirect('store-page')
-
-

@@ -29,3 +29,7 @@ X
 (Store/cart/templates/cart/cart-page.html,5\b\5bd2fe70125b3457c9a9295a84596988019f23ed
 C
 Store/cart/views.py,9\e\9ea37ce3b9a6caa7b19344c110e9ef2bcdb87f27
+D
+Store/cart/models.py,b\9\b9461394162b85598a3c8ef85f61d0b889f51667
+T
+$Store/cart/templatetags/cart_tags.py,c\f\cf1ae629b124aac614a17aebb940bd859e53d3d6
