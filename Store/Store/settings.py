@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainpage.apps.MainpageConfig',
     'cart.apps.CartConfig',
-    'favorite.apps.FavoriteConfig'
+    'favorite.apps.FavoriteConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,7 @@ MEDIA_ROOT = BASE_DIR / MEDIA_URL
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'mainpage.CustomUser'
+
+LOGIN_REDIRECT_URL = '/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

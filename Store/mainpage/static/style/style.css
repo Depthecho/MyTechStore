@@ -947,6 +947,43 @@ body{
     border-radius: 20px;
 }
 
+/*--Paginator--*/
+.pagination {
+    width: 1110px;
+    height: 30px;
+
+    margin: 0 auto;
+
+    background-color: var(--bg-dark-theme-color);
+  }
+  
+  .pagination .container{
+    padding-top: 5px;
+  }
+  
+  .pagination > ul {
+    list-style: none;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 1rem;
+
+
+  }
+  
+  .pagination .btn {
+    color: var(--bg-light-theme-color);
+  }
+  
+  .pagination .btn.btn--sub {
+    color: var(--second-light-theme-color);
+  }
+
+
 footer{
     background-color: var(--light-theme-text-color);
 }

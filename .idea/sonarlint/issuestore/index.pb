@@ -33,3 +33,11 @@ D
 Store/cart/models.py,b\9\b9461394162b85598a3c8ef85f61d0b889f51667
 T
 $Store/cart/templatetags/cart_tags.py,c\f\cf1ae629b124aac614a17aebb940bd859e53d3d6
+F
+Store/favorite/apps.py,0\a\0a195b47c8b0fc649a7eebf5dd4e46e8d1a7501f
+G
+Store/favorite/views.py,f\a\fa1977d3e34223f22ba33da2760f5cad8f2de5ea
+F
+Store/favorite/urls.py,6\1\61ed02ff086200af5726ba1e7b67bb850940eed7
+d
+4Store/favorite/templates/favorite/favorite_list.html,3\7\3755b8c58956f046db6042c6493ba0a540e577c3

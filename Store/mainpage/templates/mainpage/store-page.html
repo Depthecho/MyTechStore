@@ -4,7 +4,7 @@
 
 {% block content %}
 <header class="main-header">
-     <div class="header-container">
+    <div class="header-container">
         <div class="logo">
             <a href="{% url 'store-page' %}">Depthecho</a>
         </div>
@@ -14,7 +14,8 @@
         </div>
         <nav class="main-nav">
             <ul class="collapsed-menu">
-                <li class="collapsed-menu-li collapsed-menu-active"><a href="{% url 'store-page' %}"><i class='bx bx-home'></i><br>
+                <li class="collapsed-menu-li collapsed-menu-active"><a href="{% url 'store-page' %}"><i
+                        class='bx bx-home'></i><br>
                     <p class="text">Store</p>
                 </a></li>
                 <li class="collapsed-menu-li"><a href="{% url 'cart' %}"><i class='bx bx-cart'></i><br>
@@ -95,15 +96,30 @@
             </div>
             <div class="store-page-container">
                 <div class="products-header">
-                    <div class="items-per-page">
+                    <form method="get" class="items-per-page">
                         <label for="itemsPerPage">Items per Page:</label>
                         <select id="itemsPerPage" name="itemsPerPage">
-                            <option value="12">12</option>
-                            <option value="18">18</option>
-                            <option value="24">24</option>
-                            <option value="30">30</option>
+                            <option value="1" {% if request.session.items_per_page == 1 %}selected{% endif %}>1</option>
+                            <option value="3" {% if request.session.items_per_page == 3 %}selected{% endif %}>3</option>
+                            <option value="12" {% if request.session.items_per_page == 12 %}selected{% endif %}>12
+                            </option>
+                            <option value="18" {% if request.session.items_per_page == 18 %}selected{% endif %}>18
+                            </option>
+                            <option value="24" {% if request.session.items_per_page == 24 %}selected{% endif %}>24
+                            </option>
+                            <option value="30" {% if request.session.items_per_page == 30 %}selected{% endif %}>30
+                            </option>
                         </select>
-                    </div>
+                        <script>
+                            document.getElementById('itemsPerPage').addEventListener('change', function () {
+                                const selectedValue = this.value;
+                                const currentURL = window.location.href;
+                                const url = new URL(currentURL);
+                                url.searchParams.set('itemsPerPage', selectedValue);
+                                window.location.href = url.toString();
+                            });
+                        </script>
+                    </form>
                     <div class="sort-by-square type-of-view-products">
                         <i class='bx bxs-grid'></i>
                     </div>
@@ -134,6 +150,31 @@
                     {% endif %}
                 </div>
                 {% endfor %}
+            </div>
+            <div class="pagination">
+                <ul class="container">
+                    {% if products.has_previous %}
+                    <li><a href="?page={{ products.previous_page_number }}" class="btn page-link">&lt;<<</a></li>
+                    {% endif %}
+                    {% if products.number > 2 %}
+                    <li><a href="?page=1" class="btn page-link">1</a></li>
+                    <li class="btn page-link">...</li>
+                    {% endif %}
+                    {% for page in products.paginator.page_range %}
+                    {% if page == products.number %}
+                    <li><a href="?page={{ page }}" class="btn page-link btn--sub">{{ page }}</a></li>
+                    {% elif page > products.number|add:"-3" and page < products.number|add:"3" %}
+                    <li><a href="?page={{ page }}" class="btn page-link">{{ page }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if products.number < products.paginator.num_pages|add:"-2" %}
+                    <li class="btn page-link">...</li>
+                    <li><a href="?page={{ products.paginator.num_pages }}" class="btn page-link">{{ products.paginator.num_pages }}</a></li>
+                    {% endif %}
+                    {% if products.has_next %}
+                    <li><a href="?page={{ products.next_page_number }}" class="btn page-link">>>&gt;</a></li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </section>

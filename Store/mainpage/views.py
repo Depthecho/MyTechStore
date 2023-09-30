@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 from .models import Product, Category
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def signup_page(request):
@@ -48,11 +50,28 @@ def store_page(request):
     products = Product.objects.all()
     categories = Category.objects.all()
 
+    # Processing of the form for selecting the number of products on the page
+    if request.method == 'GET' and 'itemsPerPage' in request.GET:
+        items_per_page = int(request.GET['itemsPerPage'])
+        request.session['items_per_page'] = items_per_page
+    else:
+        # If the value is not specified in the form, use the stored value in the session
+        items_per_page = request.session.get('items_per_page', 12)
+
+    paginator = Paginator(products, items_per_page)
+    page = request.GET.get('page')
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
     filter_price_min = request.GET.get('price_min')
     filter_price_max = request.GET.get('price_max')
     sort_by = request.GET.get('sort_by')
     category = request.GET.get('category', 'all')
-    items_per_page = request.GET.get('itemsPerPage', 12)
 
     if filter_price_min:
         products = products.filter(price__gte=filter_price_min)
@@ -69,23 +88,3 @@ def store_page(request):
 
     context = {'products': products, 'categories': categories}
     return render(request, 'mainpage/store-page.html', context)
-
-
-def add_to_favorite(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    user = request.user
-
-    # Добавляем продукт в избранное пользователя
-    user.favorite_products.add(product)
-
-    return redirect('store-page')
-
-
-def remove_from_favorite(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    user = request.user
-
-    # Удаляем продукт из избранного пользователя
-    user.favorite_products.remove(product)
-
-    return redirect('store-page')

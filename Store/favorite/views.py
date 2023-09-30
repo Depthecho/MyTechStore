@@ -9,7 +9,7 @@ def add_to_favorite(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     user = request.user
 
-    # Добавляем продукт в избранное пользователя
+    # Adding the product to the user's favorites
     user.favorite_products.add(product)
 
     return redirect('store-page')
@@ -20,7 +20,7 @@ def remove_from_favorite_store(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     user = request.user
 
-    # Удаляем продукт из избранного пользователя
+    # Removing the product from the user's favorites
     user.favorite_products.remove(product)
 
     return redirect('store-page')
@@ -30,7 +30,7 @@ def remove_from_favorite(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     user = request.user
 
-    # Удаляем продукт из избранного пользователя
+    # Removing the product from the user's favorites
     user.favorite_products.remove(product)
 
     return redirect('favorite-list')
