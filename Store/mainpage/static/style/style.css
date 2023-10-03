@@ -439,7 +439,8 @@ body{
 }
 /*--header--*/
 .main-header {
-    background-color: var(--main-light-theme-color);
+    background-image: linear-gradient( var(--main-light-theme-color), var(--third-light-theme-color));
+    /*background-color: var(--main-light-theme-color);*/
     color: #fff;
     height: 70px;
     padding: 10px 20px;
@@ -706,7 +707,7 @@ body{
 
     margin: 0 auto;
 
-    background-color: var(--main-light-theme-color);
+    background-color: #EEA576;
     border-radius: 40px 40px 0 0;
 }
 
@@ -785,7 +786,7 @@ body{
     flex-wrap: wrap;
     justify-content: space-around;
 
-    background-color: var(--dark-theme-text-color);
+    background-image: linear-gradient(60deg, var(--bg-light-theme-color), #FFF2BE);
 }
 
 .products-header{
@@ -857,6 +858,9 @@ body{
 
     border: 1px solid var(--main-light-theme-color);
     border-radius: 20px;
+
+
+    background-image: var(--bg-light-theme-color);
 }
 
 .products h2{
@@ -982,7 +986,7 @@ body{
 
     margin: 0 auto;
 
-    background-color: var(--main-light-theme-color);
+    background-color: #EEA576;
     border-radius: 40px 40px 0 0;
 }
 
@@ -993,7 +997,7 @@ body{
     margin: 0 auto;
     padding-top: 20px;
 
-    background-color: var(--dark-theme-text-color);
+    background-image: linear-gradient(60deg, var(--bg-light-theme-color), #FFF2BE);
 
     clear: both;
 }
@@ -1126,7 +1130,7 @@ footer{
 
     margin: 0 auto;
 
-    background-color: var(--main-light-theme-color);
+    background-color: #EEA576;
     border-radius: 40px 40px 0 0;
 }
 .cart-page-container{
@@ -1139,7 +1143,7 @@ footer{
     flex-wrap: wrap;
     justify-content: space-around;
 
-    background-color: var(--dark-theme-text-color);
+    background-image: linear-gradient(60deg, var(--bg-light-theme-color), #FFF2BE);
 }
 
 .remove-from-cart-button{
@@ -1243,7 +1247,7 @@ footer{
 
     margin: 0 auto;
 
-    background-color: var(--main-light-theme-color);
+    background-color: #EEA576;
     border-radius: 40px 40px 0 0;
 }
 .favorite-list-container{
@@ -1256,7 +1260,7 @@ footer{
     flex-wrap: wrap;
     justify-content: space-around;
 
-    background-color: var(--dark-theme-text-color);
+    background-image: linear-gradient(60deg, var(--bg-light-theme-color), #FFF2BE);
 }
 
 .fav-list-empty{
@@ -1296,7 +1300,7 @@ footer{
 
     margin: 0 auto;
 
-    background-color: var(--main-light-theme-color);
+    background-color: #EEA576;
     border-radius: 40px 40px 0 0;
 }
 
@@ -1363,7 +1367,7 @@ footer{
 
     margin: 0 auto;
 
-    background-color: var(--main-light-theme-color);
+    background-color: #EEA576;
     border-radius: 40px 40px 0 0;
 }
 
@@ -1374,7 +1378,7 @@ footer{
     margin: 0 auto;
     padding-top: 20px;
 
-    background-color: var(--dark-theme-text-color);
+    background-image: linear-gradient(60deg, var(--bg-light-theme-color), #FFF2BE);
 
     clear: both;
 

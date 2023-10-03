@@ -49,8 +49,6 @@
                     <form method="get" class="items-per-page">
                         <label for="itemsPerPage">Items per Page:</label>
                         <select id="itemsPerPage" name="itemsPerPage">
-                            <option value="1" {% if request.session.items_per_page == 1 %}selected{% endif %}>1</option>
-                            <option value="3" {% if request.session.items_per_page == 3 %}selected{% endif %}>3</option>
                             <option value="12" {% if request.session.items_per_page == 12 %}selected{% endif %}>12
                             </option>
                             <option value="18" {% if request.session.items_per_page == 18 %}selected{% endif %}>18
