@@ -1,0 +1,32 @@
+{% extends 'mainpage/base.html' %}
+{% load static %}
+{% load cart_tags %}
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+{% include 'mainpage/main_header.html' %}
+<div class="orders-page-body">
+
+    <div class="empty-space">
+        <h1 class="store-header">
+            Your orders
+        </h1>
+    </div>
+
+    <section class="orders-page-main">
+        <div class="orders-page-content">
+            <div class="orders-page-container{% if orders|length < 9 %} height-1300{% endif %}">
+                 <ul>
+                {% for order in orders %}
+                <li>
+                     <h2><a href="{% url 'order-detail' order.id %}">Order Number: {{ order.order_number }}</a></h2>
+                    <p>Total Price: ${{ order.total_price }}</p>
+                    <p>Date: {{ order.order_date }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

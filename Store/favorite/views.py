@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 
 from mainpage.models import Product
@@ -39,4 +40,8 @@ def remove_from_favorite(request, product_id):
 @login_required(login_url='login-page')
 def favorite_list(request):
     favorite_products = request.user.favorite_products.all()
-    return render(request, 'favorite/favorite_list.html', {'favorite_products': favorite_products})
+    items_per_page = 9
+    paginator = Paginator(favorite_products, items_per_page)
+    page_number = request.GET.get('page')
+    page = paginator.get_page(page_number)
+    return render(request, 'favorite/favorite_list.html', {'favorite_products': page})
