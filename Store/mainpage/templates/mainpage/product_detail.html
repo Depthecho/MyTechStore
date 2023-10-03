@@ -1,0 +1,87 @@
+{% extends 'mainpage/base.html' %}
+{% load static %}
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<header class="main-header">
+    <div class="header-container">
+        <div class="logo">
+            <a href="{% url 'store-page' %}">Depthecho</a>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search...">
+            <i class='bx bx-search-alt-2'></i>
+        </div>
+        <nav class="main-nav">
+            <ul class="collapsed-menu">
+                <li class="collapsed-menu-li collapsed-menu-active"><a href="{% url 'store-page' %}"><i
+                        class='bx bx-home'></i><br>
+                    <p class="text">Store</p>
+                </a></li>
+                <li class="collapsed-menu-li"><a href="{% url 'cart' %}"><i class='bx bx-cart'></i><br>
+                    <p class="text">Cart</p>
+                </a></li>
+                <li class="collapsed-menu-li"><a href="/orders"><i class='bx bx-notepad'></i><br>
+                    <p class="text">Orders</p>
+                </a></li>
+                <li class="collapsed-menu-li"><a href="{% url 'favorite-list' %}"><i class='bx bx-star'></i><br>
+                    <p class="text">Favorite</p>
+                </a></li>
+                <li class="dropdown">
+                    <a href="#" id="burger-button" onclick="toggleDropdown()"><i class='bx bx-menu'></i></a>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <ul>
+                            <li class="dropdown-menu-li dropdown-menu-afterline"><a href="">Profile</a></li>
+                            <li class="dropdown-menu-li dropdown-menu-afterline"><a href="">Settings</a></li>
+                            <li class="dropdown-menu-li" id="dropdown-menu-logout"><a href="{% url 'log-out' %}">Log
+                                Out</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <script>
+        // Function to toggle dropdown menu visibility
+        function toggleDropdown() {
+            var dropdownMenu = document.getElementById("dropdownMenu");
+            var dropdownMenuButton = document.getElementById("burger-button");
+            if (dropdownMenu.style.display === "block") {
+                dropdownMenu.style.display = "none";
+                dropdownMenuButton.style.color = "var(white)";
+            } else {
+                dropdownMenu.style.display = "block";
+                dropdownMenuButton.style.color = "var(white)";
+            }
+        }
+    </script>
+</header>
+<div class="product-detail-body">
+
+    <div class="empty-space">
+        <h1 class="store-header">
+            Product detail
+        </h1>
+    </div>
+
+    <section class="product-detail-main">
+        <div class="product-detail-content">
+            <div class="product-detail-container">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% endif %}
+                <h1>{{ product.name }}</h1>
+                <p><b>Category:</b> {{ product.category }}</p>
+                <p><b>Description:</b> {{ product.description }}</p>
+                <p><b>Price:</b> ${{ product.price }}</p>
+
+                <form method="post" action="{% url 'add-to-cart' product.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

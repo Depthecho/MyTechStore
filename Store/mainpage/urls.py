@@ -5,6 +5,8 @@ from . import views
 urlpatterns = [
     # Main
     path('', views.store_page, name='store-page'),
+    path('product/<int:product_id>/', views.product_detail, name='product-detail'),
+
 
     # Auth
     path('signup/', views.signup_page, name='signup-page'),

@@ -1,5 +1,4 @@
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
@@ -41,6 +40,7 @@ def login_page(request):
     return render(request, 'mainpage/login-page.html', {'error_message': error_message})
 
 
+@login_required(login_url='login-page')
 def logout_page(request):
     logout(request)
     return redirect('login-page')
@@ -88,3 +88,9 @@ def store_page(request):
 
     context = {'products': products, 'categories': categories}
     return render(request, 'mainpage/store-page.html', context)
+
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    context = {'product': product}
+    return render(request, 'mainpage/product_detail.html', context)

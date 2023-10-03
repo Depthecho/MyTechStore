@@ -861,7 +861,17 @@ body{
 
 .products h2{
     padding: 15px 40px 0 40px;
+}
+
+.products h2 a{
+    color: var(--light-theme-text-color);
+
+    text-decoration: none;
     font-size: 20px;
+}
+
+.products h2 a:hover{
+    color: var(--main-light-theme-color)
 }
 
 .products img{
@@ -921,6 +931,7 @@ body{
     background-color: var(--dark-theme-text-color);
 
     border: 1px solid var(--main-light-theme-color);
+    cursor: pointer;
 }
 
 .products button a{
@@ -946,6 +957,108 @@ body{
     border: 1px solid var(--dark-theme-text-color);
     border-radius: 20px;
 }
+
+/*--Products-details--*/
+.product-detail-body{
+    background-image: var(--bg-light-theme);
+    background-size: cover;
+    background-size: cover;
+}
+
+.product-detail-main{
+    width: 100%;
+    height: 100%;
+
+    background-color: transparent;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+.product-detail-content{
+    position: relative;
+
+    width: 1500px;
+    height: 100%;
+
+    margin: 0 auto;
+
+    background-color: var(--main-light-theme-color);
+    border-radius: 40px 40px 0 0;
+}
+
+.product-detail-container{
+    width: 1110px;
+    height: 900px;
+
+    margin: 0 auto;
+    padding-top: 20px;
+
+    background-color: var(--dark-theme-text-color);
+
+    clear: both;
+}
+
+.product-detail-container img {
+    width: auto;
+    height: 400px;
+
+    float: left;
+
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 100%; 
+
+    padding: 20px 40px;
+
+    border: 3px solid var(--second-light-theme-color);
+}
+
+.product-detail-container h1{
+    height: 30px;
+    font-size: 36px;
+}
+
+.product-detail-container h1, .product-detail-container p {
+    margin-left: 10px; 
+}
+
+.product-detail-container p{
+    display: block;
+
+    margin-top: 50px;
+    margin-right: 20px;
+
+    font-size: 20px;
+}
+
+.product-detail-container form{
+    display: block;
+
+    margin-top: 20px;
+}
+
+.product-detail-container form button{
+    float: right;
+
+    padding: 20px 60px;
+
+    margin-right: 20px;
+
+    font-size: 28px;
+
+    color: var(--light-theme-text-color);
+    background-color: var(--main-light-theme-color);
+
+    border: 3px solid var(--main-light-theme-color);
+    border-radius: 40px;
+}
+
+.product-detail-container form button:hover{
+    background-color: var(--dark-theme-text-color);
+    cursor: pointer;
+}
+
+
 
 /*--Paginator--*/
 .pagination {
