@@ -5,15 +5,16 @@ from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 from .models import Product, Category
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from user_profile.models import UserProfile
 
 
 def signup_page(request):
-    print(request.POST)
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
             # Log the user in after successful registration
+            UserProfile.objects.create(user=user)
             login(request, user)
             return redirect('store-page')  # Redirect to the store page after signup
     else:
