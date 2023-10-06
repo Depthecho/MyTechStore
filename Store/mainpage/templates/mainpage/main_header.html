@@ -26,10 +26,18 @@
                     <a href="#" id="burger-button" onclick="toggleDropdown()"><i class='bx bx-menu'></i></a>
                     <div class="dropdown-menu" id="dropdownMenu">
                         <ul>
-                            <li class="dropdown-menu-li dropdown-menu-afterline"><a href="">Profile</a></li>
-                            <li class="dropdown-menu-li dropdown-menu-afterline"><a href="">Settings</a></li>
-                            <li class="dropdown-menu-li" id="dropdown-menu-logout"><a href="{% url 'log-out' %}">Log
-                                Out</a></li>
+                            <li class="dropdown-menu-li dropdown-menu-afterline">
+                                {% if profile.avatar %}
+                                <img class="profile-avatar" src="{{ profile.avatar.url }}" alt="profile avatar">
+                                {% endif %}
+                                <a href="{% url 'profile' %}">Profile</a>
+                            </li>
+                            <li class="dropdown-menu-li dropdown-menu-afterline">
+                                <a href="">Settings</a>
+                            </li>
+                            <li class="dropdown-menu-li" id="dropdown-menu-logout">
+                                <a href="{% url 'log-out' %}">Log Out</a>
+                            </li>
                         </ul>
                     </div>
                 </li>

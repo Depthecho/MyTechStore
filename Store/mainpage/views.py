@@ -50,6 +50,11 @@ def logout_page(request):
 def store_page(request):
     products = Product.objects.all()
     categories = Category.objects.all()
+    user = request.user
+    try:
+        profile = UserProfile.objects.get(user=user)
+    except UserProfile.DoesNotExist:
+        profile = None
 
     # Processing of the form for selecting the number of products on the page
     if request.method == 'GET' and 'itemsPerPage' in request.GET:
@@ -87,11 +92,16 @@ def store_page(request):
     if category != 'all':
         products = products.filter(category__name=category)
 
-    context = {'products': products, 'categories': categories}
+    context = {'products': products, 'categories': categories, 'profile': profile}
     return render(request, 'mainpage/store-page.html', context)
 
 
 def product_detail(request, product_id):
+    user = request.user
+    try:
+        profile = UserProfile.objects.get(user=user)
+    except UserProfile.DoesNotExist:
+        profile = None
     product = get_object_or_404(Product, id=product_id)
-    context = {'product': product}
+    context = {'product': product, 'profile': profile}
     return render(request, 'mainpage/product_detail.html', context)

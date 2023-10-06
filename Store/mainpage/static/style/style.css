@@ -435,7 +435,7 @@ body{
 .store-page-body{
     background-image: var(--bg-light-theme);
     background-size: cover;
-    background-size: cover;
+    background-position: center;
 }
 /*--header--*/
 .main-header {
@@ -604,14 +604,6 @@ body{
     z-index: 2;
 }
 
-.dropdown-menu ul li a{
-    display: block;
-    color: var(--bg-dark-theme-color);
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-
 .dropdown ul {
     width: 100%;
 
@@ -623,6 +615,7 @@ body{
 
 .dropdown ul li{
     width: 100%;
+    height: 100%;
 
     margin: 0;
 
@@ -630,6 +623,21 @@ body{
     vertical-align: middle;
 }
 
+.dropdown-menu ul li img{
+    width: 100px;
+    height: 100px;
+
+    margin: 10px 0px 0px 20px;
+}
+
+.dropdown-menu ul li a{
+    display: block;
+
+    color: var(--bg-dark-theme-color);
+
+    margin: 0;
+    padding: 5px 0px 5px 0px;
+}
 
 .dropdown ul li:nth-child(1):after{
     position: absolute;
@@ -764,6 +772,8 @@ body{
     width: 100%;
 
     margin-top: 20px;
+
+    ba
 }
 
 .sort-by-category{
@@ -824,6 +834,8 @@ body{
     display: block;
 
     border: 1px solid var(--second-light-theme-color);
+
+    background-color: var(--third-light-theme-color);
 }
 
 
@@ -966,7 +978,7 @@ body{
 .product-detail-body{
     background-image: var(--bg-light-theme);
     background-size: cover;
-    background-size: cover;
+    background-position: center;
 }
 
 .product-detail-main{
@@ -1110,7 +1122,7 @@ footer{
 .cart-page-body{
     background-image: var(--bg-light-theme);
     background-size: cover;
-    background-size: cover;
+    background-position: center;
 }
 
 .cart-page-main{
@@ -1165,7 +1177,7 @@ footer{
     border: 2px solid var(--dark-theme-text-color);
     border-radius: 20px;
 
-    background-color: var(--dark-theme-text-color);
+    background-color: #FFF2BE;
 
     top: 30px;
     right: 10px;
@@ -1227,7 +1239,7 @@ footer{
 .favorite-list-body{
     background-image: var(--bg-light-theme);
     background-size: cover;
-    background-size: cover;
+    background-position: center;
 }
 
 .favorite-list-main{
@@ -1280,7 +1292,7 @@ footer{
 .orders-page-body{
     background-image: var(--bg-light-theme);
     background-size: cover;
-    background-size: cover;
+    background-position: center;
 }
 
 .orders-page-main{
@@ -1311,7 +1323,7 @@ footer{
     margin: 0 auto;
     padding-top: 20px;
 
-    background-color: var(--dark-theme-text-color);
+    background-color: #FFF2BE;
 
     clear: both;
     
@@ -1347,7 +1359,7 @@ footer{
 .order-detail-body{
     background-image: var(--bg-light-theme);
     background-size: cover;
-    background-size: cover;
+    background-position: center;
 }
 
 .order-detail-main{
@@ -1403,6 +1415,186 @@ footer{
 .order-detail-container ul li img{
     height: 200px;
     width: auto;
+}
+
+
+/*---------------PROFILE---------------*/
+
+.profile-page-body{
+    background-image: var(--bg-light-theme);
+    background-size: cover;
+    background-position: center;
+}
+
+.profile-page-main{
+    width: 100%;
+    height: 1200px;
+
+    background-color: transparent;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+.profile-page-content{
+    position: relative;
+
+    width: 1500px;
+    height: 100%;
+
+    margin: 0 auto;
+
+    background-color: #EEA576;
+    border-radius: 40px 40px 0 0;
+}
+.profile-page-container{
+    width: 1110px;
+    height: 100%;
+
+    margin: 0 auto;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    background-image: linear-gradient(60deg, var(--bg-light-theme-color), #FFF2BE);
+}
+
+.username-and-image{
+    width: 30%;
+
+    text-align: center;
+}
+
+.profile-username{
+    width: 300px;
+    font-size: 36px;
+    margin: 10px 0px;
+}
+
+.profile-avatar{
+    display: block;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    margin-bottom: 50px;
+}
+
+.update-profile, .delete-profile{
+    display: block;
+
+    margin-top: 15px;
+    padding: 5px 3px;
+
+    width: 300px;
+
+    border: 3px solid var(--second-light-theme-color);
+    border-radius: 10px;
+
+    color: var(--dark-theme-text-color);
+    background-color: var(--main-light-theme-color);
+
+    text-decoration: none;
+}
+
+.delete-profile{
+    background-color: red;
+}
+
+.update-profile:hover, .delete-profile:hover{
+    background-color: #FCF2CC;
+    color: var(--main-light-theme-color)
+}
+
+
+.profile-information{
+    display: block;
+
+    width: 50%;
+
+    margin-top: 90px;
+
+    text-align: left;
+}
+
+.profile-information p{
+    width: 300px;
+
+    margin-top: 30px;
+}
+
+/*----------Edit Profile----------*/
+
+.update-profile-page-body{
+    background-image: var(--bg-light-theme);
+    background-size: cover;
+    background-position: center;
+}
+
+.update-profile-page-main{
+    width: 100%;
+    height: 1200px;
+
+    background-color: transparent;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+.update-profile-page-content{
+    position: relative;
+
+    width: 1500px;
+    height: 100%;
+
+    margin: 0 auto;
+
+    background-color: #EEA576;
+    border-radius: 40px 40px 0 0;
+}
+.update-profile-page-container{
+    width: 1110px;
+    height: 100%;
+
+    margin: 0 auto;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    background-image: linear-gradient(60deg, var(--bg-light-theme-color), #FFF2BE);
+}
+
+.update-profile-page-container form{
+    margin-top: 20px;
+
+    text-align: left;
+}
+
+.update-profile-page-container form p{
+    display: block;
+
+    margin-top: 10px;
+}
+
+.update-profile-page-container form button{
+    margin-top: 20px;
+
+    padding: 5px;
+
+    border: 2px solid var(--second-light-theme-color);
+    border-radius: 10px;
+
+    color: var(--dark-theme-text-color);
+    background-color: var(--main-light-theme-color);
+}
+
+.update-profile-page-container form button:hover{
+    background-color: #FCF2CC;
+    color: var(--main-light-theme-color);
+
+    cursor: pointer;
 }
 
 

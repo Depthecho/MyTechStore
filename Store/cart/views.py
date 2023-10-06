@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, redirect
 from mainpage.models import Product, Category
 from .models import CartItem
+from user_profile.models import UserProfile
 
 
 @login_required(login_url='login-page')
@@ -24,9 +25,16 @@ def add_to_cart(request, product_id):
 
 @login_required(login_url='login-page')
 def cart_page(request):
+    user = request.user
+    try:
+        profile = UserProfile.objects.get(user=user)
+    except UserProfile.DoesNotExist:
+        profile = None
+
     cart_items = CartItem.objects.filter(user=request.user)
     total_quantity = cart_items.aggregate(total_quantity=Sum('quantity'))['total_quantity']
-    return render(request, 'cart/cart-page.html', {'cart_items': cart_items, 'total_quantity': total_quantity})
+    context = {'cart_items': cart_items, 'total_quantity': total_quantity, 'profile': profile}
+    return render(request, 'cart/cart-page.html', context)
 
 
 @login_required(login_url='login-page')
