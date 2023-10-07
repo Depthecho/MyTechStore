@@ -56,6 +56,10 @@ def store_page(request):
     except UserProfile.DoesNotExist:
         profile = None
 
+    search_query = request.GET.get('search')
+    if search_query:
+        products = products.filter(name__icontains=search_query)
+
     # Processing of the form for selecting the number of products on the page
     if request.method == 'GET' and 'itemsPerPage' in request.GET:
         items_per_page = int(request.GET['itemsPerPage'])
