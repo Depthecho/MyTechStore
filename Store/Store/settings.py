@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'mainpage.apps.MainpageConfig',
     'cart.apps.CartConfig',
     'favorite.apps.FavoriteConfig',
-    'crispy_forms',
     'orders.apps.OrdersConfig',
-    'user_profile.apps.UserProfileConfig'
+    'user_profile.apps.UserProfileConfig',
+    'user_settings.apps.UserSettingsConfig',
 ]
 
 MIDDLEWARE = [

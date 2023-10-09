@@ -7,6 +7,7 @@
     --bg-light-theme: url('/static/images/BG_light.jpg');
     --bg-dark-theme: url('/static/images/BG_dark.jpg');
     --main-dark-theme-color: #9C67E0;
+    --second-dark-theme-color: #4E2E72;
     --bg-dark-theme-color: #515252;
     --dark-theme-text-color: white;
 }
@@ -634,7 +635,7 @@ body{
     border: 2px solid var(--main-light-theme-color);
     border-radius: 5px;
 
-    background-color: var(--dark-theme-text-color);
+    background-image: linear-gradient(75deg,  var(--main-light-theme-color), var(--third-light-theme-color));
 
     list-style: none;
     z-index: 2;
@@ -830,6 +831,9 @@ body{
     flex-wrap: wrap;
     justify-content: space-around;
 
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+
     background-image: linear-gradient(60deg, var(--bg-light-theme-color), #FFF2BE);
 }
 
@@ -840,8 +844,11 @@ body{
     display: flex;
     justify-content: flex-end;
 
-    border: 2px solid var(--second-light-theme-color);
+    background-color: transparent;
 
+    border: 2px solid var(--second-light-theme-color);
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
 }
 
 .items-per-page{
@@ -884,6 +891,12 @@ body{
     padding: 2px;
 
     border: 1px solid var(--second-light-theme-color);
+}
+
+.types-of-view-products{
+    display: flex;
+
+    margin-right: 25px;
 }
 
 .type-of-view-products:hover{
@@ -1310,6 +1323,10 @@ footer{
     background-image: linear-gradient(60deg, var(--bg-light-theme-color), #FFF2BE);
 }
 
+.favorite-list-container .products button:hover a{
+    text-decoration: none;
+}
+
 .fav-list-empty{
     display: block;
 
@@ -1358,7 +1375,7 @@ footer{
     margin: 0 auto;
     padding-top: 20px;
 
-    background-color: #FFF2BE;
+    background-image: linear-gradient(60deg, var(--bg-light-theme-color), #FFF2BE);
 
     clear: both;
     
@@ -1375,8 +1392,15 @@ footer{
 }
 
 .orders-page-container ul li{
-    margin-top: 2px;
+    display: block;
+
+    width: 90%;
+
+    margin-left: 55px;
+    margin-top: 20px;
+
     border: 3px solid var(--second-light-theme-color);
+    border-radius: 50px;
 }
 
 .orders-page-container ul li a{
@@ -1560,7 +1584,7 @@ footer{
     margin-top: 30px;
 }
 
-/*----------Edit Profile----------*/
+/*----------Update Profile----------*/
 
 .update-profile-page-body{
     background-image: var(--bg-light-theme);
@@ -1632,6 +1656,110 @@ footer{
     cursor: pointer;
 }
 
+/*---------------SETTINGS---------------*/
+
+.settings-page-body{
+    background-image: var(--bg-light-theme);
+    background-size: cover;
+    background-position: center;
+}
+
+.settings-page-main{
+    width: 100%;
+    height: 1200px;
+
+    background-color: transparent;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+.settings-page-content{
+    position: relative;
+
+    width: 1500px;
+    height: 100%;
+
+    margin: 0 auto;
+
+    background-color: #EEA576;
+    border-radius: 40px 40px 0 0;
+}
+
+.main-settings{
+    position: absolute;
+
+    left: 40px;
+    top: 20px;
+
+    text-align: center;
+}
+
+.main-settings ul{
+    list-style: none;
+}
+
+.main-settings ul li{
+    margin-top: 30px;
+}
+
+.main-settings ul li a{
+    text-decoration: none;
+}
+
+.settings-page-container{
+    width: 1110px;
+    height: 100%;
+
+    margin: 0 auto;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    background-image: linear-gradient(60deg, var(--bg-light-theme-color), #FFF2BE);
+}
+
+.main-settings a{
+    color: #FCF2CC
+}
+
+.main-settings a:hover{
+    color: var(--second-light-theme-color)
+}
+
+/*-----Appearance settings-----*/
+
+.appearance-settings{
+    display: block;
+
+    margin-top: 20px;
+
+    width: 100%;
+}
+
+.setttings-block{
+    display: flex;
+
+    color: var(--bg-light-theme-color);
+    
+    justify-content: space-between;
+
+    margin: 0 70px 0 70px;
+
+    padding: 10px;
+
+    background-color: var(--main-light-theme-color);
+
+    border: 2px solid var(--second-light-theme-color);
+}
+
+.appearance-settings button{
+    color: var(--bg-light-theme-color);
+    
+    background-color: transparent;
+
+    border: none;
+}
 
 
 
@@ -1772,4 +1900,440 @@ footer{
 
 .dark-mode .tooltip-ul{
     color: var(--main-dark-theme-color)
+}
+
+.dark-mode .store-page-body{
+    background-image: var(--bg-dark-theme);
+}
+
+.dark-mode .main-header{
+    background-image: linear-gradient(var(--main-dark-theme-color), #6BCDD3);
+}
+
+.dark-mode .search button{
+
+    border: 1px solid var(--main-dark-theme-color);
+    border-radius: 20px;
+
+    background-color: var(--dark-theme-text-color);
+}
+
+.dark-mode .search button:hover{
+    background-color: var(--main-dark-theme-color);
+}
+
+.dark-mode .dropdown-menu {
+    color: var(--dark-theme-text-color);
+
+    border: 2px solid var(--main-dark-theme-color);
+    
+    background-image: linear-gradient(75deg, var(--main-dark-theme-color), var(--second-dark-theme-color));
+}
+
+.dark-mode .dropdown-menu ul li a{
+    color: var(--dark-theme-text-color);
+}
+
+.dark-mode .dropdown ul li:nth-child(1):after{
+    border-top: 2px solid var(--main-dark-theme-color);
+}
+
+.dark-mode .dropdown ul li:nth-child(2):after{
+    border-top: 2px solid var(--main-dark-theme-color);
+}
+
+.dark-mode .dropdown ul li:hover{
+    background-color: var(--main-dark-theme-color);
+}
+
+.dark-mode .empty-space h1{
+    color: var(--dark-theme-text-color);
+}
+
+
+.dark-mode .store-page-content{
+    background-color: var(--second-dark-theme-color);
+}
+
+.dark-mode .sort-products button{
+    border: 2px solid var(--main-dark-theme-color);
+
+    background-color: var(--dark-theme-text-color);
+
+    color: var(--light-theme-text-color);
+}
+
+.dark-mode .sort-products button:hover{
+    color: var(--dark-theme-text-color);
+
+    background-color: var(--main-dark-theme-color);
+}
+
+.dark-mode .store-page-container{
+    background-image: linear-gradient(45deg, var(--main-dark-theme-color), #6BCDD3);
+}
+
+.dark-mode .products-header{
+    background-color: transparent;
+
+    border: 2px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .items-per-page{
+
+    border: 1px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .items-per-page select{
+    border: 1px solid var(--second-dark-theme-color);
+
+    color: var(--dark-theme-text-color);
+
+    background-color: #B894E1;
+}
+
+
+.dark-mode .type-of-view-products{
+    border: 1px solid var(--second-dark-theme-color);
+
+    color: var(--second-dark-theme-color);
+}
+
+.dark-mode .type-of-view-products:hover{
+    color: var(--dark-theme-text-color);
+}
+
+.dark-mode .products{
+    border: 1px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .products h2 a{
+    color: var(--dark-theme-text-color);
+}
+
+.dark-mode .products h2 a:hover{
+    color: var(--second-dark-theme-color)
+}
+
+.dark-mode .products i{
+    color: var(--main-dark-theme-color);
+}
+
+.dark-mode .products button, .dark-mode .products form button{
+    background-color: var(--main-dark-theme-color);
+    
+    border: 1px solid var(--dark-theme-text-color);
+
+    color: var(--dark-theme-text-color)
+}
+
+.dark-mode .products button:hover{
+    background-color: var(--dark-theme-text-color);
+
+    border: 1px solid var(--second-dark-theme-color);
+
+    color: var(--main-dark-theme-color)
+}
+
+.dark-mode .products button a{
+    text-decoration: none;
+    color: var(--dark-theme-text-color);
+}
+
+.dark-mode .products button:hover a{
+    color: var(--light-theme-text-color);
+    text-decoration: underline;
+}
+
+.dark-mode .out-of-stock{
+    width: 150px;
+
+    padding: 5px;
+    margin-top: 20px;
+
+    text-align: center;
+
+    background-color: var(--main-light-theme-color);
+    
+    border: 1px solid var(--dark-theme-text-color);
+    border-radius: 20px;
+}
+
+.dark-mode .product-detail-body{
+    background-image: var(--bg-dark-theme);
+}
+
+.dark-mode .product-detail-content{
+    background-color: var(--second-dark-theme-color);
+}
+
+.dark-mode .product-detail-container{
+    background-image: linear-gradient(45deg, var(--main-dark-theme-color), #6BCDD3);
+}
+
+.dark-mode .product-detail-container img {
+    border: 3px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .product-detail-container form button{
+    color: var(--light-theme-text-color);
+    background-color: var(--main-dark-theme-color);
+
+    border: 3px solid var(--dark-theme-text-color)
+}
+
+.dark-mode .product-detail-container form button:hover{
+    background-color: var(--dark-theme-text-color);
+
+    color: var(--main-dark-theme-color)
+}
+
+/*--Paginator--*/
+
+.pagination {
+    background-color: var(--bg-dark-theme-color);
+  }
+    
+  .pagination .btn {
+    color: var(--main-dark-theme-color);
+  }
+  
+  .pagination .btn.btn--sub {
+    color: var(--second-dark-theme-color);
+  }
+
+  /*---------------CART---------------*/
+
+.dark-mode .cart-page-body{
+    background-image: var(--bg-dark-theme);
+}
+
+.dark-mode .cart-page-content{
+    background-color: var(--second-dark-theme-color);
+}
+.dark-mode .cart-page-container{
+    background-image: linear-gradient(45deg, var(--main-dark-theme-color), #6BCDD3);
+}
+
+.dark-mode .remove-from-cart-button{
+    padding: 6px;
+
+    color: var(--dark-theme-text-color)
+}
+
+.dark-mode .remove-from-cart-button:hover{
+    color: var(--light-theme-text-color)
+}
+
+.dark-mode .cart-purchase{
+    background-color: var(--main-dark-theme-color)
+}
+
+.dark-mode .cart-purchase form button{
+    background-color: var(--second-dark-theme-color);
+
+
+    border: 2px solid var(--dark-theme-text-color);
+}
+
+.dark-mode .cart-purchase form button a{
+    text-decoration: none;
+
+    color: var(--dark-theme-text-color);
+}
+
+.dark-mode .cart-purchase form button:hover{
+    cursor: pointer;
+
+    background-color: var(--dark-theme-text-color);
+}
+
+.dark-mode .cart-purchase form button:hover a{
+    color: var(--main-dark-theme-color);
+}
+
+.dark-mode .cart-empty{
+    display: block;
+
+    height: auto;
+
+    font-size: 30px;
+    font-weight: 600;
+
+    margin-top: 40px;
+}
+
+/*---------------FAVORITE---------------*/
+
+.dark-mode .favorite-list-body{
+    background-image: var(--bg-dark-theme);
+}
+
+.dark-mode .favorite-list-content{
+    background-color: var(--second-dark-theme-color);
+}
+
+.dark-mode .favorite-list-container{
+    background-image: linear-gradient(45deg, var(--main-dark-theme-color), #6BCDD3);
+}
+
+.dark-mode .favorite-list-container .products button:hover a{
+    text-decoration: none;
+}
+
+/*---------------ORDERS---------------*/
+
+.dark-mode .orders-page-body{
+    background-image: var(--bg-dark-theme);
+}
+
+.dark-mode .orders-page-content{
+    background-color: var(--second-dark-theme-color);
+}
+
+.dark-mode .orders-page-container{
+    background-image: linear-gradient(45deg, var(--main-dark-theme-color), #6BCDD3);
+}
+
+.dark-mode .orders-page-container ul li{
+    border: 3px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .orders-page-container ul li a{
+    color: var(--main-dark-theme-color);
+    
+    text-decoration: none;
+}
+
+.dark-mode .orders-page-container ul li a:hover{
+    color: var(--second-dark-theme-color)
+}
+
+/*--Orders-details--*/
+
+.dark-mode .order-detail-body{
+    background-image: var(--bg-dark-theme);
+}
+
+.dark-mode .order-detail-content{
+    background-color: var(--second-dark-theme-color);
+}
+
+.dark-mode .order-detail-container{
+    background-image: linear-gradient(45deg, var(--main-dark-theme-color), #6BCDD3);
+}
+
+.dark-mode .order-detail-container ul li{
+    border: 2px solid var(--second-dark-theme-color);
+}
+
+/*---------------PROFILE---------------*/
+
+.dark-mode .profile-page-body{
+    background-image: var(--bg-dark-theme);
+}
+
+.dark-mode .profile-page-content{
+    background-color: var(--second-dark-theme-color);
+}
+.dark-mode .profile-page-container{
+    background-image: linear-gradient(45deg, var(--main-dark-theme-color), #6BCDD3);
+}
+
+.dark-mode .update-profile, .delete-profile{
+    border: 3px solid var(--second-dark-theme-color);
+
+    color: var(--dark-theme-text-color);
+    background-color: var(--main-dark-theme-color);
+
+}
+
+.dark-mode .delete-profile{
+    background-color: red;
+}
+
+.dark-mode .update-profile:hover, .delete-profile:hover{
+    background-color: var(--dark-theme-text-color);
+
+    color: var(--main-dark-theme-color)
+}
+
+.dark-mode .delete-profile:hover{
+    color: red
+}
+
+.dark-mode .profile-information p{
+    color: var(--main-dark-theme-color)
+}
+
+.dark-mode .profile-information p strong{
+    color: var(--second-dark-theme-color)
+}
+
+/*----------Update Profile----------*/
+
+.dark-mode .update-profile-page-body{
+    background-image: var(--bg-dark-theme);
+}
+
+.dark-mode .update-profile-page-content{
+    background-color: var(--second-dark-theme-color);
+}
+.dark-mode .update-profile-page-container{
+    background-image: linear-gradient(45deg, var(--main-dark-theme-color), #6BCDD3);
+}
+.dark-mode .update-profile-page-container form button{
+    margin-top: 20px;
+
+    padding: 5px;
+
+    border: 2px solid var(--second-dark-theme-color);
+    border-radius: 10px;
+
+    color: var(--dark-theme-text-color);
+    background-color: var(--main-dark-theme-color);
+}
+
+.dark-mode .update-profile-page-container form button:hover{
+    background-color: var(--dark-theme-text-color);
+    color: var(--main-dark-theme-color);
+
+    cursor: pointer;
+}
+
+/*---------------SETTINGS---------------*/
+
+.dark-mode .settings-page-body{
+    background-image: var(--bg-dark-theme);
+}
+
+.dark-mode .settings-page-content{
+    background-color: var(--second-dark-theme-color);
+}
+
+
+.dark-mode .settings-page-container{
+    background-image: linear-gradient(45deg, var(--main-dark-theme-color), #6BCDD3);
+}
+
+.dark-mode .main-settings a{
+    color: var(--main-dark-theme-color)
+}
+
+.dark-mode .main-settings a:hover{
+    color: var(--dark-theme-text-color)
+}
+
+/*-----Appearance settings-----*/
+
+.dark-mode .setttings-block{
+    color: var(--dark-theme-text-color);
+    
+    background-color: var(--main-dark-theme-color);
+
+    border: 2px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .appearance-settings button i{
+    color: var(--dark-theme-text-color)
 }

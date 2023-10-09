@@ -31,7 +31,6 @@
                         {% endif %}
                         <p><b>Category:</b> {{ product.category }}</p>
                         <p><b>Price:</b> ${{ product.price }}</p>
-                        <button><a href="{% url 'add-to-cart' product.id %}">Add to Cart</a></button>
                         <button><a href="{% url 'remove-from-favorite-fav' product.id %}">Remove from Favorite</a></button>
                     </div>
                     {% endfor %}

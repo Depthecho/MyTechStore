@@ -37,6 +37,9 @@ urlpatterns = [
 
     # Profile
     path('', include('user_profile.urls')),
+
+    # Settings
+    path('', include('user_settings.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

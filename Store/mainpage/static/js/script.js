@@ -14,14 +14,24 @@ function darkmode(){
     body.classList.toggle('dark-mode', !wasDarkmode)
 }
 
-document.querySelector('.swap-theme').addEventListener('click', darkmode)
+if ((window.location.href.split('/')[3] + window.location.href.split('/')[4]) === "settings?setting=appearance") {
+    document.querySelector('.swap-theme').addEventListener('click', darkmode)
+    }
 
 
 function onload(){
 if (localStorage.getItem("darkmode") == "true"){
-    document.getElementsByClassName("swap-theme")[0].children[0].classList.toggle('fa-sun')
-    document.getElementsByClassName("swap-theme")[0].children[0].classList.toggle('fa-moon')
+    if ((window.location.href.split('/')[3] + window.location.href.split('/')[4]) === "settings?setting=appearance") {
+        document.getElementsByClassName("swap-theme")[0].children[0].classList.toggle('fa-sun')
+        document.getElementsByClassName("swap-theme")[0].children[0].classList.toggle('fa-moon')
+        }
     }
+    document.body.classList.toggle('dark-mode', localStorage.getItem('darkmode') == 'true')
+}
+document.addEventListener('DOMContentLoaded', onload)
+
+
+function onload_without_button(){
     document.body.classList.toggle('dark-mode', localStorage.getItem('darkmode') == 'true')
 }
 document.addEventListener('DOMContentLoaded', onload)

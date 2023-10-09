@@ -1,0 +1,48 @@
+{% extends 'mainpage/base.html' %}
+{% load static %}
+{% block title %}My settings{% endblock %}
+
+{% block content %}
+{% include 'mainpage/main_header.html' %}
+
+<div class="settings-page-body">
+    <div class="empty-space">
+        <h1 class="store-header">
+            My settings
+        </h1>
+    </div>
+
+    <section class="settings-page-main">
+        <div class="settings-page-content">
+            <div class="main-settings">
+                <ul>
+                    <li><a href="?setting=appearance">Appearance</a></li>
+                    <li><a href="?setting=confidentiality">Confidentiality</a></li>
+                </ul>
+            </div>
+            <div class="settings-page-container" id="settings-container">
+                {% if selected_setting == 'appearance' %}
+                <div class="appearance-settings">
+                    <div class="setttings-block">
+                        <p>My theme:</p>
+                    <button class="swap-theme">
+                        <i class="theme-indicator fa-regular fa-moon fa-2xl"></i>
+                    </button>
+                </div>
+                </div>
+            </div>
+            {% elif selected_setting == 'confidentiality' %}
+            {% csrf_token %}
+            <div class="change-password-form">
+                <h1>Change Password</h1>
+                <form method="post" action="{% url 'change-password' %}">
+                    {{ form.as_p }}
+                    <button type="submit">Change Password</button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+</div>
+{% endblock %}
