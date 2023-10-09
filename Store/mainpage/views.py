@@ -60,24 +60,6 @@ def store_page(request):
     if search_query:
         products = products.filter(name__icontains=search_query)
 
-    # Processing of the form for selecting the number of products on the page
-    if request.method == 'GET' and 'itemsPerPage' in request.GET:
-        items_per_page = int(request.GET['itemsPerPage'])
-        request.session['items_per_page'] = items_per_page
-    else:
-        # If the value is not specified in the form, use the stored value in the session
-        items_per_page = request.session.get('items_per_page', 12)
-
-    paginator = Paginator(products, items_per_page)
-    page = request.GET.get('page')
-
-    try:
-        products = paginator.page(page)
-    except PageNotAnInteger:
-        products = paginator.page(1)
-    except EmptyPage:
-        products = paginator.page(paginator.num_pages)
-
     filter_price_min = request.GET.get('price_min')
     filter_price_max = request.GET.get('price_max')
     sort_by = request.GET.get('sort_by')
@@ -95,6 +77,24 @@ def store_page(request):
 
     if category != 'all':
         products = products.filter(category__name=category)
+
+    # Processing of the form for selecting the number of products on the page
+    if request.method == 'GET' and 'itemsPerPage' in request.GET:
+        items_per_page = int(request.GET['itemsPerPage'])
+        request.session['items_per_page'] = items_per_page
+    else:
+        # If the value is not specified in the form, use the stored value in the session
+        items_per_page = request.session.get('items_per_page', 12)
+
+    paginator = Paginator(products, items_per_page)
+    page = request.GET.get('page')
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
 
     context = {'products': products, 'categories': categories, 'profile': profile}
     return render(request, 'mainpage/store-page.html', context)

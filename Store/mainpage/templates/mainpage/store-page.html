@@ -17,22 +17,16 @@
     <section class="store-page-main">
         <div class="store-page-content">
             <div class="sort-products">
-                <form method="get" action="{% url 'store-page' %}">
-                    <label for="price_min">Min Price:</label>
-                    <input type="number" name="price_min" id="price_min" step="1" placeholder="Enter your min. price">
-                    <label for="price_max">Max Price:</label>
-                    <input type="number" name="price_max" id="price_max" step="1" placeholder="Enter your max. price">
-                    <button type="submit" class="apply-sort">Apply</button>
-                    <select name="sort_by" class="sort-by-select">
-
-                        <option value="">Sort By</option>
-                        <option value="price_low">Price Low to High</option>
-                        <option value="price_high">Price High to Low</option>
-                    </select>
-                    <button type="submit" class="apply-sort">Apply</button>
-                </form>
                 <div class="sort-by-category">
                     <form method="get" action="{% url 'store-page' %}">
+                        <label for="price_min">Price Range:</label>
+                        <input type="number" name="price_min" id="price_min" step="1" placeholder="Min Price">
+                        <input type="number" name="price_max" id="price_max" step="1" placeholder="Max Price">
+                        <select name="sort_by" class="sort-by-select">
+                            <option value="">Sort By</option>
+                            <option value="price_low">Price Low to High</option>
+                            <option value="price_high">Price High to Low</option>
+                        </select>
                         <label for="category">Sort by Category:</label>
                         <select id="category" name="category">
                             <option value="all">All Categories</option>
@@ -40,7 +34,7 @@
                             <option value="{{ cat.name }}">{{ cat.name }}</option>
                             {% endfor %}
                         </select>
-                        <button type="submit">Apply</button>
+                        <button type="submit" class="apply-sort">Apply</button>
                     </form>
                 </div>
             </div>
@@ -69,13 +63,13 @@
                         </script>
                     </form>
                     <div class="types-of-view-products">
-                    <div class="sort-by-square type-of-view-products">
-                        <i class='bx bxs-grid'></i>
+                        <div class="sort-by-square type-of-view-products">
+                            <i class='bx bxs-grid'></i>
+                        </div>
+                        <div class="sort-by-string type-of-view-products">
+                            <i class='bx bx-menu'></i>
+                        </div>
                     </div>
-                    <div class="sort-by-string type-of-view-products">
-                        <i class='bx bx-menu'></i>
-                    </div>
-                </div>
                 </div>
                 {% for product in products %}
                 <div class="products">
@@ -119,7 +113,8 @@
                     {% endfor %}
                     {% if products.number < products.paginator.num_pages|add:"-2" %}
                     <li class="btn page-link">...</li>
-                    <li><a href="?page={{ products.paginator.num_pages }}" class="btn page-link">{{ products.paginator.num_pages }}</a></li>
+                    <li><a href="?page={{ products.paginator.num_pages }}" class="btn page-link">{{
+                        products.paginator.num_pages }}</a></li>
                     {% endif %}
                     {% if products.has_next %}
                     <li><a href="?page={{ products.next_page_number }}" class="btn page-link">>>&gt;</a></li>
