@@ -27,6 +27,7 @@ def remove_from_favorite_store(request, product_id):
     return redirect('store-page')
 
 
+@login_required(login_url='login-page')
 def remove_from_favorite(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     user = request.user

@@ -1773,12 +1773,110 @@ footer{
     border: none;
 }
 
+/*-----Confidentiality settings-----*/
 
+.change-password-form{
+    width: 100%;
+    height: 280px;
 
+    color: var(--bg-light-theme-color);
 
+    margin: 20px 70px 0 70px;
 
+    padding: 10px;
 
+    background-color: var(--main-light-theme-color);
 
+    border: 3px solid var(--second-light-theme-color);
+}
+
+.change-password-form input{
+    border-radius: 30px;
+
+    padding-left: 5px;
+
+    width: 200px;
+
+    border: 2px solid var(--bg-light-theme-color);
+}
+
+.change-password-label{
+    display: block;
+
+    margin-top: 10px;
+
+    font-weight: 600;
+}
+
+.change-password-form button{
+    display: block;
+
+    margin-top: 20px;
+    padding: 7px 3px 7px 3px;
+
+    background-color: var(--main-light-theme-color);
+
+    color: var(--bg-light-theme-color);
+
+    border: 2px solid var(--bg-light-theme-color);
+    border-radius: 30px;
+
+    width: 200px;
+}
+
+.change-password-form button:hover{
+    background-color: var(--bg-light-theme-color);
+
+    color: var(--main-light-theme-color);
+
+    cursor: pointer;
+}
+
+.success {
+    display: block;
+
+    list-style: none;
+
+    margin-top: 20px;
+    padding: 3px 10px 3px 10px;
+
+    width: 330px;
+    height: 30px;
+
+    color: #155724;
+
+    background-color: #d4edda;
+
+    border: 3px solid #155724;
+}
+
+.error {
+    display: block;
+
+    list-style: none;
+
+    margin-top: 20px;
+    padding: 3px 10px 3px 10px;
+
+    width: 220px;
+    height: 30px;
+
+    color: #721c24;
+
+    background-color: #f8d7da;
+
+    bordeR: 3px solid #721c24;
+}
+
+.non-user-alert{
+    display: block;
+
+    margin-top: 20px;
+
+    font-size: 30px;
+
+    font-weight: 600;
+}
 
 
 
@@ -2348,4 +2446,34 @@ footer{
 
 .dark-mode .appearance-settings button i{
     color: var(--dark-theme-text-color)
+}
+
+/*-----Confidentiality settings-----*/
+
+.dark-mode .change-password-form{
+    color: var(--second-dark-theme-color);
+
+    background-color: var(--main-dark-theme-color);
+
+    border: 3px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .change-password-form input{
+    border-radius: 30px;
+
+    border: 2px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .change-password-form button{
+    background-color: var(--main-dark-theme-color);
+
+    color: var(--dark-theme-text-color);
+
+    border: 2px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .change-password-form button:hover{
+    background-color: var(--dark-theme-text-color);
+
+    color: var(--main-dark-theme-color);
 }

@@ -50,10 +50,13 @@ def store_page(request):
     products = Product.objects.all()
     categories = Category.objects.all()
     user = request.user
-    try:
-        profile = UserProfile.objects.get(user=user)
-    except UserProfile.DoesNotExist:
-        profile = None
+
+    profile = None
+    if request.user.is_authenticated:
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+        except UserProfile.DoesNotExist:
+            pass
 
     search_query = request.GET.get('search')
     if search_query:

@@ -23,6 +23,7 @@ def orders_page(request):
     return render(request, 'orders/orders_page.html', context)
 
 
+@login_required(login_url='login-page')
 def add_to_order(request):
     user = request.user
     order, created = Order.objects.get_or_create(user=user, total_price=0)

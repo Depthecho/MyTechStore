@@ -1,9 +1,11 @@
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import UserProfile, CustomUserProfileForm
 from .forms import UserProfileForm
 
 
+@login_required(login_url='login-page')
 def profile(request):
     user = request.user
     try:
@@ -14,6 +16,7 @@ def profile(request):
     return render(request, 'user_profile/profile.html', {'profile': profile})
 
 
+@login_required(login_url='login-page')
 def update_profile(request):
     user = request.user
     try:
@@ -33,6 +36,7 @@ def update_profile(request):
     return render(request, 'user_profile/update_profile.html', {'form': form})
 
 
+@login_required(login_url='login-page')
 def delete_profile(request):
     user = request.user
     try:
