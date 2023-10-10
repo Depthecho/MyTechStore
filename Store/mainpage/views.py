@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404,render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 from .models import Product, Category
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger

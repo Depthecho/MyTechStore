@@ -19,10 +19,10 @@
             <div class="profile-page-container">
                 <div class="username-and-image">
                     <h1 class="profile-username">{{ user.username }}</h1>
-                   {% if profile.avatar %}
-                   <img class="profile-avatar" src="{{ profile.avatar.url }}" alt="profile avatar">
+                    {% if profile.avatar %}
+                    <img class="profile-avatar" src="{{ profile.avatar.url }}" alt="profile avatar">
                     {% else %}
-                   <img class="profile-avatar" src="{% static 'default.png' %}" alt="profile avatar">
+                    <img class="profile-avatar" src="{% static 'avatars/default.png' %}" alt="profile avatar">
                     {% endif %}
                     <a href="{% url 'update-profile' %}" class="update-profile">Update profile</a>
                     <a href="{% url 'delete-profile' %}" class="delete-profile">Delete Profile</a>

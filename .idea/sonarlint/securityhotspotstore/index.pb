@@ -109,3 +109,9 @@ M
 Store/user_settings/models.py,e\2\e29460fcaae9841f0080af0ccf8c38fe5c3afe46
 L
 Store/user_settings/forms.py,7\f\7f703a670d11f12b230d707cc454bc7edad05ff8
+V
+&Store/user_profile/static/js/script.js,c\7\c7637e88dc8fbeff0752790e8e7bd8dbb90f7eca
+R
+"Store/mainpage/static/js/script.js,e\b\eb5786ef02f4118f90766cf61b4520ef8a30ec3a
+L
+Store/user_settings/admin.py,e\d\edfaba8ab55ce9b675e0772c26be920466225eb8

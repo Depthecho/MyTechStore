@@ -9,7 +9,7 @@ class UserProfile(models.Model):
     first_name = models.CharField(max_length=50, default="-")
     last_name = models.CharField(max_length=50, default="-")
     email = models.EmailField()
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True, default='avatars/default.png')
     phone_number = models.CharField(max_length=20, null=True, blank=True, default="-")
 
     def save(self, *args, **kwargs):
