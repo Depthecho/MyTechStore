@@ -1549,6 +1549,8 @@ footer{
     border-radius: 50%;
 
     margin-bottom: 50px;
+
+    background-color: var(--dark-theme-text-color);
 }
 
 .update-profile, .delete-profile{
