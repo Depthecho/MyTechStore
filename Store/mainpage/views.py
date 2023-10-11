@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404,render, redirect
 from django.contrib.auth import login, authenticate, logout
-from .forms import RegistrationForm
-from .models import Product, Category
+from .forms import RegistrationForm, ProductCommentForm
+from .models import Product, Category, ProductComment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from user_profile.models import UserProfile
 
@@ -103,11 +103,40 @@ def store_page(request):
 
 
 def product_detail(request, product_id):
-    user = request.user
-    try:
-        profile = UserProfile.objects.get(user=user)
-    except UserProfile.DoesNotExist:
-        profile = None
     product = get_object_or_404(Product, id=product_id)
-    context = {'product': product, 'profile': profile}
+    profile = None
+    user = request.user
+    user_comment = None
+
+    if user.is_authenticated:
+        try:
+            profile = UserProfile.objects.get(user=user)
+        except UserProfile.DoesNotExist:
+            pass
+
+        comments = ProductComment.objects.filter(product=product)
+
+        user_comment = comments.filter(user=user).first()
+
+        if request.method == 'POST':
+            form = ProductCommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.user = request.user
+                comment.product = product
+                comment.save()
+                return redirect('product-detail', product_id=product_id)
+        else:
+            form = ProductCommentForm()
+    else:
+        form = None
+        comments = ProductComment.objects.filter(product=product)
+
+    context = {
+        'product': product,
+        'profile': profile,
+        'form': form,
+        'user_comment': user_comment,
+        'comments': comments,
+    }
     return render(request, 'mainpage/product_detail.html', context)

@@ -38,7 +38,11 @@
                                 <a href="{% url 'settings' %}">Settings</a>
                             </li>
                             <li class="dropdown-menu-li" id="dropdown-menu-logout">
+                                {% if user.is_authenticated %}
                                 <a href="{% url 'log-out' %}">Log Out</a>
+                                {% else %}
+                                <a href="{% url 'login-page' %}">Log In</a>
+                                {% endif %}
                             </li>
                         </ul>
                     </div>

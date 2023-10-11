@@ -1061,7 +1061,7 @@ body{
 
 .product-detail-container{
     width: 1110px;
-    height: auto;
+    height: 100%;
 
     margin: 0 auto;
     padding-top: 20px;
@@ -1098,10 +1098,7 @@ body{
 .product-detail-container p{
     display: block;
 
-    margin-top: 50px;
-    margin-right: 20px;
-
-    font-size: 20px;
+    margin: 50px 20px 0px 20px;
 }
 
 .product-detail-container form{
@@ -1110,12 +1107,64 @@ body{
     margin-top: 20px;
 }
 
-.product-detail-container form button{
+.buy-button{
     float: right;
 
     padding: 20px 60px;
 
-    margin-right: 20px;
+    margin: 20px 20px 20px;
+
+    font-size: 24px;
+
+    color: var(--light-theme-text-color);
+    background-color: var(--main-light-theme-color);
+
+    border: 3px solid var(--second-light-theme-color);
+    border-radius: 40px;
+}
+
+.product-detail-container form button:hover{
+    background-color: var(--dark-theme-text-color);
+    cursor: pointer;
+}
+
+.product-comment-form{
+    width: 90%;
+
+    margin: 100px 50px 50px 50px;
+    
+}
+
+.product-comment-form p{
+    margin-top: 20px;
+    margin-left: 0;
+}
+
+.product-comment-form label{
+    float: left;
+}
+
+.product-comment-form select{
+    border: 2px solid var(--second-light-theme-color);
+
+    background-color: var(--bg-light-theme-color);
+}
+
+.product-comment-form textarea{
+    width: 95%;
+    height: 400px;
+
+    resize: none;
+
+    border: 2px solid var(--second-light-theme-color)
+}
+
+.add-comment-btn{
+    display: block;
+
+    padding: 20px 60px;
+
+    margin-right: 0px;
 
     font-size: 28px;
 
@@ -1126,11 +1175,89 @@ body{
     border-radius: 40px;
 }
 
-.product-detail-container form button:hover{
-    background-color: var(--dark-theme-text-color);
-    cursor: pointer;
+.all-comments{
+    width: 90%;
+
+    margin: 0 auto;
+    margin-top: 150px;
 }
 
+.all-comments a{
+    text-decoration: none;
+
+    color: var(--main-light-theme-color)
+}
+
+.all-comments a:hover{
+    text-decoration: underline;
+
+    color: var(--second-light-theme-color);
+}
+
+
+.all-comments h2{
+    color: var(--second-light-theme-color)
+}
+
+.all-comments ul{
+    list-style: none;
+}
+
+.all-comments ul li{
+    display: block;
+
+    margin-top: 20px;
+
+    width: 100%;
+    height: 100%;
+
+    border: 3px solid var(--second-light-theme-color);
+}
+
+
+
+.all-about-comment{
+    word-wrap: break-word;
+    width: 95%;
+}
+
+.all-comments ul li .all-about-comment img{
+    float: left;
+
+    height: 80px;
+    width: 80px;
+
+    padding: 0;
+    margin: 10px 0 0 10px;
+    
+
+    border-radius: 50px;
+}
+
+.all-comments ul li .all-about-comment .username-comment{
+    display: block;
+
+    margin-left: 100px;
+    margin-top: 0px;
+
+    font-size: 24px;
+}
+
+.all-comments ul li .all-about-comment .user-rating {
+    display: block;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    margin-left: 100px;
+    margin-top: 0px;
+
+    color: var(--second-light-theme-color);
+}
+
+.all-about-comment p{
+    width: 100%;
+}
 
 
 /*--Paginator--*/
@@ -2156,17 +2283,9 @@ footer{
 }
 
 .dark-mode .out-of-stock{
-    width: 150px;
-
-    padding: 5px;
-    margin-top: 20px;
-
-    text-align: center;
-
     background-color: var(--main-light-theme-color);
     
     border: 1px solid var(--dark-theme-text-color);
-    border-radius: 20px;
 }
 
 .dark-mode .product-detail-body{
@@ -2393,12 +2512,7 @@ footer{
     background-image: linear-gradient(45deg, var(--main-dark-theme-color), #6BCDD3);
 }
 .dark-mode .update-profile-page-container form button{
-    margin-top: 20px;
-
-    padding: 5px;
-
     border: 2px solid var(--second-dark-theme-color);
-    border-radius: 10px;
 
     color: var(--dark-theme-text-color);
     background-color: var(--main-dark-theme-color);
@@ -2476,4 +2590,44 @@ footer{
     background-color: var(--dark-theme-text-color);
 
     color: var(--main-dark-theme-color);
+}
+
+.dark-mode .product-comment-form select{
+    border: 2px solid var(--second-dark-theme-color);
+
+    background-color: var(--main-dark-theme-color);
+
+    color: var(--dark-theme-text-color)
+}
+
+.dark-mode .product-comment-form textarea{
+    border: 2px solid var(--second-dark-theme-color)
+}
+
+.dark-mode .add-comment-btn{
+    color: var(--dark-theme-text-color);
+    background-color: var(--main-dark-theme-color);
+
+    border: 3px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .all-comments a{
+    color: var(--second-dark-theme-color);
+}
+
+.dark-mode .all-comments a:hover{
+    color: var(--main-dark-theme-color);
+}
+
+
+.dark-mode .all-comments h2{
+    color: var(--second-dark-theme-color)
+}
+
+.dark-mode .all-comments ul li{
+    border: 3px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .all-comments ul li .all-about-comment .user-rating {
+    color: var(--second-dark-theme-color);
 }

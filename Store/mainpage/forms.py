@@ -2,8 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
-
-from .models import CustomUser
+from .models import CustomUser, ProductComment
 
 
 class RegistrationForm(UserCreationForm):
@@ -65,3 +64,9 @@ class RegistrationForm(UserCreationForm):
             raise forms.ValidationError('This email address is already registered. Please use a different one.')
 
         return email
+
+
+class ProductCommentForm(forms.ModelForm):
+    class Meta:
+        model = ProductComment
+        fields = ['rating', 'comment']
