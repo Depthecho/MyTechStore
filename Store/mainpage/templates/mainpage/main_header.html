@@ -57,10 +57,15 @@
             var dropdownMenuButton = document.getElementById("burger-button");
             if (dropdownMenu.style.display === "block") {
                 dropdownMenu.style.display = "none";
-                dropdownMenuButton.style.color = "var(white)";
+                dropdownMenuButton.style.setProperty("color", "white", "important")
             } else {
+            if (localStorage.getItem("darkmode") == "true"){
                 dropdownMenu.style.display = "block";
-                dropdownMenuButton.style.color = "var(white)";
+                dropdownMenuButton.style.setProperty("color", "var(--main-dark-theme-color)", "important")
+                }else {
+            dropdownMenu.style.display = "block";
+                dropdownMenuButton.style.setProperty("color", "var(--main-light-theme-color)", "important")
+            }
             }
         }
     </script>

@@ -715,10 +715,6 @@ body{
     color: var(--light-theme-text-color);
 }
 
-#burger-button:active{
-    color: var(--main-light-theme-color)
-}
-
 /*--Empty-space--*/
 .empty-space{
     width: 100%;
@@ -2005,46 +2001,17 @@ footer{
     font-weight: 600;
 }
 
+.non-user-alert a{
+    color: var(--main-light-theme-color)
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.non-user-alert a:hover{
+    color: var(--second-light-theme-color)
+}
 
 .height-1300{
     height: 1300px;
 }
-
-
 
 /*---------------DARK THEME---------------*/
 /*----------Sign Up----------*/
@@ -2067,10 +2034,6 @@ footer{
 .dark-mode .signup-container .signup-button{
     color: white;
     background-color: var(--main-dark-theme-color);
-}
-
-.dark-mode i{
-    color: var(--main-dark-theme-color)
 }
 
 .dark-mode .signup-container .signup-button:hover{
@@ -2109,10 +2072,6 @@ footer{
 
 .dark-mode .login-container .forgot-password a:hover{
     text-decoration: underline;
-}
-
-.dark-mode i{
-    color: var(--main-dark-theme-color)
 }
 
 .dark-mode .login-container .login-button:hover{
@@ -2630,4 +2589,12 @@ footer{
 
 .dark-mode .all-comments ul li .all-about-comment .user-rating {
     color: var(--second-dark-theme-color);
+}
+
+.dark-mode .non-user-alert a{
+    color: var(--main-dark-theme-color)
+}
+
+.non-user-alert a:hover{
+    color: var(--second-dark-theme-color)
 }

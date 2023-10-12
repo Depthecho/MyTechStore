@@ -9,6 +9,14 @@ from .forms import AppearanceSettingsForm, ConfidentialitySettingsForm, ChangePa
 def settings_view(request):
     selected_setting = request.GET.get('setting')
     filtered_profiles = UserProfile.objects.all()
+    profile = None
+    user = request.user
+
+    if user.is_authenticated:
+        try:
+            profile = UserProfile.objects.get(user=user)
+        except UserProfile.DoesNotExist:
+            profile = None
 
     if request.method == 'POST':
         password_change_form = ChangePasswordForm(request.POST)
@@ -38,10 +46,20 @@ def settings_view(request):
         'profiles': filtered_profiles,
         'selected_setting': selected_setting,
         'password_change_form': password_change_form,
+        'profile': profile,
     })
 
 
 def appearance_settings_view(request):
+    profile = None
+    user = request.user
+
+    if user.is_authenticated:
+        try:
+            profile = UserProfile.objects.get(user=user)
+        except UserProfile.DoesNotExist:
+            profile = None
+
     if request.method == 'POST':
         appearance_settings_form = AppearanceSettingsForm(request.POST)
         if appearance_settings_form.is_valid():
@@ -49,16 +67,25 @@ def appearance_settings_view(request):
     else:
         appearance_settings_form = AppearanceSettingsForm()
 
-    return render(request, 'appearance_settings.html', {'appearance_settings_form': appearance_settings_form})
+    return render(request, 'appearance_settings.html', {'appearance_settings_form': appearance_settings_form, 'profile': profile})
 
 
 @login_required(login_url='login-page')
 def confidentiality_settings_view(request):
+    profile = None
+    user = request.user
+
+    if user.is_authenticated:
+        try:
+            profile = UserProfile.objects.get(user=user)
+        except UserProfile.DoesNotExist:
+            pass
+
     if request.method == 'POST':
         confidentiality_settings_form = ConfidentialitySettingsForm(request.POST)
         if confidentiality_settings_form.is_valid():
-            pass
+            profile = None
     else:
         confidentiality_settings_form = ConfidentialitySettingsForm()
 
-    return render(request, 'confidentiality_settings.html', {'confidentiality_settings_form': confidentiality_settings_form})
+    return render(request, 'confidentiality_settings.html', {'confidentiality_settings_form': confidentiality_settings_form, 'profile': profile})

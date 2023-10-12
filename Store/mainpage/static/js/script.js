@@ -31,3 +31,23 @@ if (localStorage.getItem("darkmode") == "true"){
     document.body.classList.toggle('dark-mode', localStorage.getItem('darkmode') == 'true')
 }
 document.addEventListener('DOMContentLoaded', onload)
+
+
+        // Function to toggle dropdown menu visibility
+        //function toggleDropdown() {
+            //var dropdownMenu = document.getElementById("dropdownMenu");
+            //var dropdownMenuButton = document.getElementById("burger-button");
+            //if (dropdownMenu.style.display === "block") {
+                //dropdownMenu.style.display = "none";
+                //dropdownMenuButton.style.setProperty("color", "white", "important")
+            //} else {
+                //dropdownMenu.style.display = "block";
+                //dropdownMenuButton.style.setProperty("color", "var(--main-light-theme-color)", "important")
+        //}
+        //document.getElementById('burger-button').addEventListener('click', function () {
+   //if (this.style.color === "white") {
+      //this.style.color === "var(--main-light-theme-color)"
+   //} else {
+      //this.style.color === "white"
+   //}
+//});

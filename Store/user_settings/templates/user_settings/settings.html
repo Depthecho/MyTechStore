@@ -59,7 +59,7 @@
                 </form>
             </div>
             {% else %}
-            <p class="non-user-alert">To begin with, you must log in</p>
+                <p class="non-user-alert">To begin with, you must <a href="{% url 'login-page' %}">log in</a></p>
             {% endif %}
             {% endif %}
         </div>

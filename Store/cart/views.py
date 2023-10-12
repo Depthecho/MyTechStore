@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Sum
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, redirect
@@ -33,7 +34,21 @@ def cart_page(request):
 
     cart_items = CartItem.objects.filter(user=request.user)
     total_quantity = cart_items.aggregate(total_quantity=Sum('quantity'))['total_quantity']
+
+    items_per_page = 12
+
+    paginator = Paginator(cart_items, items_per_page)
+    page = request.GET.get('page')
+
+    try:
+        cart_items = paginator.page(page)
+    except PageNotAnInteger:
+        cart_items = paginator.page(1)
+    except EmptyPage:
+        cart_items = paginator.page(paginator.num_pages)
+
     context = {'cart_items': cart_items, 'total_quantity': total_quantity, 'profile': profile}
+
     return render(request, 'cart/cart-page.html', context)
 
 
