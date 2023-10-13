@@ -63,16 +63,16 @@
                         </script>
                     </form>
                     <div class="types-of-view-products">
-                        <div class="sort-by-square type-of-view-products type-of-view-products-selected" id="grid-view-button">
+                        <div class="sort-by-square type-of-view-products" id="grid-view-button">
                             <a href="?view_mode=grid"><i class='bx bxs-grid'></i></a>
                         </div>
-                        <div class="sort-by-string type-of-view-products" id="list-view-button">
+                        <div class="sort-by-string type-of-view-products type-of-view-products-selected" id="list-view-button">
                             <a href="?view_mode=list"><i class='bx bx-menu'></i></a>
                         </div>
                     </div>
                 </div>
                 {% for product in products %}
-                <div class="products">
+                <div class="products-list">
                     <h2><a href="{% url 'product-detail' product.id %}">{{ product.name }}</a></h2>
                     {% if product.image %}
                     <img src="{{ product.image.url }}" alt="{{ product.name }}">

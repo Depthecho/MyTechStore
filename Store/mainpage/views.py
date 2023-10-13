@@ -51,6 +51,13 @@ def store_page(request):
     categories = Category.objects.all()
     user = request.user
 
+    view_mode = request.GET.get('view_mode', 'grid')
+
+    if view_mode == 'list':
+        template_name = 'mainpage/store-page-list.html'
+    else:
+        template_name = 'mainpage/store-page.html'
+
     profile = None
     if request.user.is_authenticated:
         try:
@@ -98,8 +105,8 @@ def store_page(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    context = {'products': products, 'categories': categories, 'profile': profile}
-    return render(request, 'mainpage/store-page.html', context)
+    context = {'products': products, 'categories': categories, 'profile': profile, 'vm': view_mode}
+    return render(request, template_name, context)
 
 
 def product_detail(request, product_id):

@@ -115,3 +115,5 @@ R
 "Store/mainpage/static/js/script.js,e\b\eb5786ef02f4118f90766cf61b4520ef8a30ec3a
 L
 Store/user_settings/admin.py,e\d\edfaba8ab55ce9b675e0772c26be920466225eb8
+f
+6Store/mainpage/templates/mainpage/store-page-list.html,6\3\631abd6e6a1a0713883e36b720aa3f0277925f5c
