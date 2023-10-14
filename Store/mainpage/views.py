@@ -105,7 +105,7 @@ def store_page(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    context = {'products': products, 'categories': categories, 'profile': profile, 'vm': view_mode}
+    context = {'products': products, 'categories': categories, 'profile': profile, 'search_query': search_query}
     return render(request, template_name, context)
 
 

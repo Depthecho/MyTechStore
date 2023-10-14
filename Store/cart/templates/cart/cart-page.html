@@ -18,20 +18,24 @@
             <div class="cart-page-container{% if cart_items|length < 9 %} height-1300{% endif %}">
                 {% if cart_items %}
                 {% for cart_item in cart_items %}
-                <div class="products">
-                    <h2>{{ cart_item.product.name }}</h2>
-                    {% if cart_item.product.image %}
-                    <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.name }}">
-                    {% endif %}
-                    <p><b>Category:</b> {{ cart_item.product.category }}</p>
-                    <p><b>Price:</b> ${{ cart_item.product.price }}</p>
-                    <p><b>Quantity:</b> {{ cart_item.quantity }}</p>
-                    <form action="{% url 'remove-from-cart' cart_item.product.id %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="remove-from-cart-button">Remove from Cart</button>
-                    </form>
-                </div>
-                {% endfor %}
+                <div class="products cart-products">
+    <h2><a href="{% url 'product-detail' cart_item.product.id %}">{{ cart_item.product.name|slice:":30" }}...</a></h2>
+    {% if cart_item.product.image %}
+    <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.name }}">
+    {% endif %}
+    <p><b>Category:</b> {{ cart_item.product.category }}</p>
+    <p><b>Price:</b> ${{ cart_item.product.price }}</p>
+      <form action="{% url 'update-cart' cart_item.product.id %}" method="post">
+        {% csrf_token %}
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" value="{{ cart_item.quantity }}">
+        <button type="submit" class="update-cart-button">Update</button>
+    </form>
+    <form action="{% url 'remove-from-cart' cart_item.product.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="remove-from-cart-button">Remove from Cart</button>
+    </form>
+</div>{% endfor %}
             </div>
             <div class="cart-purchase">
                 {% if cart_items %}

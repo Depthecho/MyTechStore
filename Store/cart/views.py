@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.checks import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Sum
 from django.shortcuts import render, get_object_or_404
@@ -50,6 +51,24 @@ def cart_page(request):
     context = {'cart_items': cart_items, 'total_quantity': total_quantity, 'profile': profile}
 
     return render(request, 'cart/cart-page.html', context)
+
+
+@login_required(login_url='login-page')
+def update_cart(request, product_id):
+    if request.method == 'POST':
+        new_quantity = request.POST.get('quantity')
+        cart_item = get_object_or_404(CartItem, product_id=product_id)
+
+        # Получить количество имеющегося товара в базе данных
+        available_quantity = cart_item.product.quantity
+
+        if int(new_quantity) <= available_quantity:
+            cart_item.quantity = new_quantity
+            cart_item.save()
+        else:
+            messages.error(request, 'The requested quantity exceeds the available quantity.')
+
+        return redirect('cart')
 
 
 @login_required(login_url='login-page')

@@ -27,6 +27,10 @@
                             <option value="price_low">Price Low to High</option>
                             <option value="price_high">Price High to Low</option>
                         </select>
+                        <div class="slidecontainer">
+                            <div id="price-slider"></div>
+                            <span id="price-range"></span>
+                        </div>
                         <label for="category">Sort by Category:</label>
                         <select id="category" name="category">
                             <option value="all">All Categories</option>
@@ -34,8 +38,42 @@
                             <option value="{{ cat.name }}">{{ cat.name }}</option>
                             {% endfor %}
                         </select>
-                        <button type="submit" class="apply-sort">Apply</button>
+                        <button type="submit" id="apply-button" class="apply-sort">Apply</button>
                     </form>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"></script>
+
+                    <script>
+                        var priceSlider = document.getElementById('price-slider');
+                        var priceRange = document.getElementById('price-range');
+                        var applyButton = document.getElementById('apply-button');
+                        var minValueInput = document.getElementById('price_min');
+                        var maxValueInput = document.getElementById('price_max');
+
+                        noUiSlider.create(priceSlider, {
+                            start: [1, 5000],
+                            connect: true,
+                            range: {
+                                'min': 1,
+                                'max': 5000
+                            }
+                        });
+
+                        var priceValues = [1, 5000];
+
+                        priceSlider.noUiSlider.on('update', function (values, handle) {
+                            priceValues[handle] = parseInt(values[handle]);
+                            var priceText = priceValues.join(' - ');
+                            priceRange.innerHTML = priceText;
+                        });
+
+                        applyButton.addEventListener('click', function () {
+                            var minValue = priceValues[0];
+                            var maxValue = priceValues[1];
+
+                            minValueInput.value = minValue;
+                            maxValueInput.value = maxValue;
+                        });
+                    </script>
                 </div>
             </div>
             <div class="store-page-container{% if products|length < 9 %} height-1300{% endif %}">
@@ -43,6 +81,8 @@
                     <form method="get" class="items-per-page">
                         <label for="itemsPerPage">Items per Page:</label>
                         <select id="itemsPerPage" name="itemsPerPage">
+                            <option value="9" {% if request.session.items_per_page == 9 %}selected{% endif %}>9
+                            </option>
                             <option value="12" {% if request.session.items_per_page == 12 %}selected{% endif %}>12
                             </option>
                             <option value="18" {% if request.session.items_per_page == 18 %}selected{% endif %}>18
@@ -66,7 +106,8 @@
                         <div class="sort-by-square type-of-view-products" id="grid-view-button">
                             <a href="?view_mode=grid"><i class='bx bxs-grid'></i></a>
                         </div>
-                        <div class="sort-by-string type-of-view-products type-of-view-products-selected" id="list-view-button">
+                        <div class="sort-by-string type-of-view-products type-of-view-products-selected"
+                             id="list-view-button">
                             <a href="?view_mode=list"><i class='bx bx-menu'></i></a>
                         </div>
                     </div>

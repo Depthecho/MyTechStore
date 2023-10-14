@@ -5,7 +5,7 @@
         </div>
         <div class="search">
             <form method="get" action="{% url 'store-page' %}">
-            <input type="text" name="search" id="search" placeholder="Enter a product name">
+            <input type="text" name="search" id="search" {% if not search_query == None %} value="{{ search_query }}" {% endif %} placeholder="Enter a product name">
             <button type="submit" class="search-button"><i class='bx bx-search-alt-2'></i></button>
             </form>
         </div>
