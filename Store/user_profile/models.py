@@ -3,6 +3,7 @@ from django.db import models
 from mainpage.models import CustomUser
 
 
+# The user profile model
 class UserProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='profile')
     username = models.CharField(max_length=150, unique=True)
@@ -19,9 +20,3 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
-
-
-class CustomUserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
-        fields = ['first_name', 'last_name', 'email', 'avatar', 'phone_number']

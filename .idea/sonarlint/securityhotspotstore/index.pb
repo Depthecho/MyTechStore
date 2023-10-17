@@ -117,3 +117,9 @@ L
 Store/user_settings/admin.py,e\d\edfaba8ab55ce9b675e0772c26be920466225eb8
 f
 6Store/mainpage/templates/mainpage/store-page-list.html,6\3\631abd6e6a1a0713883e36b720aa3f0277925f5c
+E
+Store/orders/tests.py,8\4\848d9bb683000960cb9dcd03f8c767fe2f60930e
+H
+Store/orders/__init__.py,6\f\6f309693fb8869b7d9e19e45f65aef6588b342e7
+E
+Store/orders/admin.py,8\0\8076141203acd8705cf7af5b87c9b54931e65a60

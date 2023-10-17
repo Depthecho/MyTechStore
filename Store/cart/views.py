@@ -9,6 +9,7 @@ from .models import CartItem
 from user_profile.models import UserProfile
 
 
+# The function of adding a product to the cart
 @login_required(login_url='login-page')
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -25,6 +26,7 @@ def add_to_cart(request, product_id):
     return redirect('store-page')
 
 
+# Cart display function
 @login_required(login_url='login-page')
 def cart_page(request):
     user = request.user
@@ -53,15 +55,19 @@ def cart_page(request):
     return render(request, 'cart/cart-page.html', context)
 
 
+# Cart update function
 @login_required(login_url='login-page')
 def update_cart(request, product_id):
     if request.method == 'POST':
+        # Get a new quantity of the available product
         new_quantity = request.POST.get('quantity')
+
         cart_item = get_object_or_404(CartItem, product_id=product_id)
 
-        # Получить количество имеющегося товара в базе данных
+        # Getting the quantity of the available product in the database
         available_quantity = cart_item.product.quantity
 
+        # checking for compliance with the quantity of goods
         if int(new_quantity) <= available_quantity:
             cart_item.quantity = new_quantity
             cart_item.save()
@@ -71,6 +77,7 @@ def update_cart(request, product_id):
         return redirect('cart')
 
 
+# The function of removing a product from the cart
 @login_required(login_url='login-page')
 def remove_from_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)

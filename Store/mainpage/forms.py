@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from .models import CustomUser, ProductComment
 
 
+# The user registration form
 class RegistrationForm(UserCreationForm):
     class Meta:
         model = CustomUser
@@ -66,6 +67,7 @@ class RegistrationForm(UserCreationForm):
         return email
 
 
+# The user comments form
 class ProductCommentForm(forms.ModelForm):
     class Meta:
         model = ProductComment

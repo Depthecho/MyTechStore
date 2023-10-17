@@ -7,6 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from user_profile.models import UserProfile
 
 
+# The registration function
 def signup_page(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -22,6 +23,7 @@ def signup_page(request):
     return render(request, 'mainpage/signup-page.html', {'form': form})
 
 
+# the authorization function
 def login_page(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -40,17 +42,20 @@ def login_page(request):
     return render(request, 'mainpage/login-page.html', {'error_message': error_message})
 
 
+# The logaut function
 @login_required(login_url='login-page')
 def logout_page(request):
-    logout(request)
+    logout(request)  # Forcing the user to log out of the account
     return redirect('login-page')
 
 
+# The function of displaying the main page of the store
 def store_page(request):
     products = Product.objects.all()
     categories = Category.objects.all()
     user = request.user
 
+    # Working with the display of products on the page (linear or grid)
     view_mode = request.GET.get('view_mode', 'grid')
 
     if view_mode == 'list':
@@ -58,6 +63,7 @@ def store_page(request):
     else:
         template_name = 'mainpage/store-page.html'
 
+    # Working with the display of the user's avatar
     profile = None
     if request.user.is_authenticated:
         try:
@@ -65,10 +71,12 @@ def store_page(request):
         except UserProfile.DoesNotExist:
             pass
 
+    # Working with the search bar
     search_query = request.GET.get('search')
     if search_query:
         products = products.filter(name__icontains=search_query)
 
+    # Working with product filtering
     filter_price_min = request.GET.get('price_min')
     filter_price_max = request.GET.get('price_max')
     sort_by = request.GET.get('sort_by')
@@ -109,18 +117,21 @@ def store_page(request):
     return render(request, template_name, context)
 
 
+# The function of displaying each product separately
 def product_detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     profile = None
     user = request.user
     user_comment = None
 
+    # Working with the display of the user's avatar
     if user.is_authenticated:
         try:
             profile = UserProfile.objects.get(user=user)
         except UserProfile.DoesNotExist:
             pass
 
+        # Working with product comments
         comments = ProductComment.objects.filter(product=product)
 
         user_comment = comments.filter(user=user).first()

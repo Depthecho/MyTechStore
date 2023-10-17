@@ -6,18 +6,21 @@ from .models import UserProfile
 from .forms import AppearanceSettingsForm, ConfidentialitySettingsForm, ChangePasswordForm
 
 
+# The function of displaying the settings page
 def settings_view(request):
     selected_setting = request.GET.get('setting')
     filtered_profiles = UserProfile.objects.all()
     profile = None
     user = request.user
 
+    # Working with the display of the user's avatar
     if user.is_authenticated:
         try:
             profile = UserProfile.objects.get(user=user)
         except UserProfile.DoesNotExist:
             profile = None
 
+    # Working with password change
     if request.method == 'POST':
         password_change_form = ChangePasswordForm(request.POST)
         if password_change_form.is_valid():
@@ -50,10 +53,12 @@ def settings_view(request):
     })
 
 
+# The appearance settings display function
 def appearance_settings_view(request):
     profile = None
     user = request.user
 
+    # Working with the display of the user's avatar
     if user.is_authenticated:
         try:
             profile = UserProfile.objects.get(user=user)
@@ -70,11 +75,13 @@ def appearance_settings_view(request):
     return render(request, 'appearance_settings.html', {'appearance_settings_form': appearance_settings_form, 'profile': profile})
 
 
+# The confidentiality settings display function
 @login_required(login_url='login-page')
 def confidentiality_settings_view(request):
     profile = None
     user = request.user
 
+    # Working with the display of the user's avatar
     if user.is_authenticated:
         try:
             profile = UserProfile.objects.get(user=user)

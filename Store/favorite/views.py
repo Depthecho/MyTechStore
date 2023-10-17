@@ -5,6 +5,7 @@ from mainpage.models import Product
 from user_profile.models import UserProfile
 
 
+# The function of adding a product to favorites
 @login_required(login_url='login-page')
 def add_to_favorite(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -16,6 +17,8 @@ def add_to_favorite(request, product_id):
     return redirect('store-page')
 
 
+# The function of removing the product from favorites
+# If the user is on the main page of the store
 @login_required(login_url='login-page')
 def remove_from_favorite_store(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -27,6 +30,8 @@ def remove_from_favorite_store(request, product_id):
     return redirect('store-page')
 
 
+# The function of removing the product from favorites
+# If the user is on the favorite page
 @login_required(login_url='login-page')
 def remove_from_favorite(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -38,6 +43,7 @@ def remove_from_favorite(request, product_id):
     return redirect('favorite-list')
 
 
+# The function of displaying favorite products
 @login_required(login_url='login-page')
 def favorite_list(request):
     user = request.user

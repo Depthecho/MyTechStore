@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 
 
+# The model of the store's product categories
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
@@ -10,6 +11,7 @@ class Category(models.Model):
         return self.name
 
 
+# The store's product model
 class Product(models.Model):
     name = models.CharField(max_length=255, blank=False, null=False)
     slug = models.SlugField(max_length=200, blank=False, null=False, default="")
@@ -24,6 +26,7 @@ class Product(models.Model):
         return self.name
 
 
+# User creation model
 class CustomUserManager(BaseUserManager):
     # Function to add a user
     def create_user(self, username, email, password=None, **extra_fields):
@@ -48,6 +51,7 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(username, email, password, **extra_fields)
 
 
+# The model of a regular user
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=150, unique=True, db_index=True, null=False)
     email = models.EmailField(unique=True, null=False)
@@ -66,6 +70,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         return self.username
 
 
+# The comment model
 class ProductComment(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

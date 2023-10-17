@@ -4,6 +4,7 @@ import uuid
 from mainpage.models import CustomUser
 
 
+# The function of generating the code for the order
 def generate_order_number():
     while True:
         order_number = str(uuid.uuid4().int & (1 << 64) - 1)
@@ -11,6 +12,7 @@ def generate_order_number():
             return order_number
 
 
+# The product model
 class Order(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     order_number = models.CharField(max_length=100, unique=True, default=generate_order_number)

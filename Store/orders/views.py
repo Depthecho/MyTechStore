@@ -7,10 +7,14 @@ from cart.models import CartItem
 from user_profile.models import UserProfile
 
 
+# The order page display function
 @login_required(login_url='login-page')
 def orders_page(request):
-    orders = Order.objects.order_by('-order_date')
     user = request.user
+    # Receiving user orders
+    orders = Order.objects.order_by('-order_date')
+
+    # Working with the display of the user's avatar
     try:
         profile = UserProfile.objects.get(user=user)
     except UserProfile.DoesNotExist:
@@ -38,6 +42,7 @@ def orders_page(request):
     return render(request, 'orders/orders_page.html', context)
 
 
+# The function of adding products to the order
 @login_required(login_url='login-page')
 def add_to_order(request):
     user = request.user
@@ -46,11 +51,13 @@ def add_to_order(request):
     # Get all the items in the current user's cart
     cart_items = CartItem.objects.filter(user=user)
 
+    # Working with goods inside an order
     for cart_item in cart_items:
         product = cart_item.product
         order.products.add(product)
         order.total_price += product.price
 
+    # Removing items from the shopping cart after purchasing an item
     cart_items.delete()
 
     order.save()
@@ -58,14 +65,18 @@ def add_to_order(request):
     return redirect('orders')
 
 
+# The function of displaying each order separately
 @login_required(login_url='login-page')
 def order_detail(request, order_id):
     user = request.user
+
+    # Working with the display of the user's avatar
     try:
         profile = UserProfile.objects.get(user=user)
     except UserProfile.DoesNotExist:
         profile = None
 
+    # Getting an order from a request
     order = get_object_or_404(Order, id=order_id, user=user)
 
     order_items = order.products.all().order_by('id')
