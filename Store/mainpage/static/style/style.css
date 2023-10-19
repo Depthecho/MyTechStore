@@ -1448,11 +1448,6 @@ body{
     color: var(--second-light-theme-color);
   }
 
-
-footer{
-    background-color: var(--light-theme-text-color);
-}
-
 /*---------------CART---------------*/
 
 .cart-page-body{
@@ -2181,7 +2176,85 @@ footer{
 
 .list-view {
     display: block;
+
     width: 100%;
+}
+
+/*---------------FOOTER---------------*/
+
+footer {
+    background-color: #333;
+
+    color: #7B797E;
+
+    padding: 40px 0; 
+}
+
+.footer-container {
+    width: 1200px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+
+    margin-right: 20px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li i{
+    display: block;
+
+    margin-right: 5px;
+}
+
+.footer-section a {
+    display: flex;
+
+    color: #7B797E;
+
+    text-decoration: none;
+
+    align-items: center;
+}
+
+
+.footer-section a:hover {
+    color: var(--dark-theme-text-color);
+
+    text-decoration: underline;
+}
+
+.footer-section .fab {
+    font-size: 20px;
+
+    margin-right: 5px;
+}
+
+.footer-section .edit-icon {
+    margin-left: 5px;
 }
 
 /*--------------------DARK THEME--------------------*/
