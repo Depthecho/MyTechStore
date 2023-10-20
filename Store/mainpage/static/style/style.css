@@ -432,6 +432,80 @@ body{
     cursor: pointer;
 }
 
+/*-----Password reset-----*/
+.password-reset-body, .password-reset-done-body, .password-reset-confirm-body, .password-reset-complete-body{
+    background-image: var(--bg-light-theme);
+    background-size: cover;
+    background-position: center;
+
+    height: 1200px;
+}
+
+.password-reset-container, .password-reset-done-container, .password-reset-confirm-container, .password-reset-complete-container{
+    width: 1200px;
+    height: 100%;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.password-reset-header, .password-reset-done-header, .password-reset-confirm-header, .password-reset-complete-header{
+    color: var(--main-light-theme-color);
+}
+
+.password-reset-body i, .password-reset-done-body i, .password-reset-confirm-body i, .password-reset-complete-body i{
+    position: absolute;
+
+    top: 50px;
+    right: 30px;
+
+    font-size: 50px;
+
+    color: var(--main-light-theme-color)
+}
+
+.password-reset-done-message{
+    display: block;
+
+    width: 100%;
+    height: 50px;
+
+    background-color: transparent;
+
+    border: 3px solid var(--second-light-theme-color);
+
+    padding-top: 15px;
+    margin-top: 60px;
+
+    color: var(--dark-theme-text-color);
+
+    backdrop-filter: blur(20px);
+}
+
+.password-reset-button, .password-reset-confirm-button{
+    margin-top: 20px;
+
+    background-color: transparent;
+
+    backdrop-filter: blur(20px);
+
+    padding: 7px 20px;
+
+    color: var(--dark-theme-text-color);
+
+    border: 3px solid var(--second-light-theme-color);
+    border-radius: 20px;
+}
+
+.password-reset-button:hover, .password-reset-confirm-button:hover{
+    cursor: pointer;
+
+    box-shadow: inset 2px 2px 2px 0.1px var(--dark-theme-text-color);
+
+    color: var(--main-light-theme-color)
+}
+
 /*---------------STORE PAGE---------------*/
 .store-page-body{
     background-image: var(--bg-light-theme);
@@ -442,25 +516,37 @@ body{
 .main-header {
     background-image: linear-gradient( var(--main-light-theme-color), var(--third-light-theme-color));
     /*background-color: var(--main-light-theme-color);*/
+
     color: #fff;
+
     height: 70px;
+
     padding: 10px 20px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 }
 
 .header-container{
     width: 1200px;
+
     margin: 0 auto;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 }
 
 .logo a {
     color: var(--dark-theme-text-color);
+
     text-decoration: none;
+
     font-size: 32px;
     font-weight: bold;
 }
@@ -468,15 +554,20 @@ body{
 .search{
     width: 300px;
     height: 20px;
+
     position: relative;
+
     border-radius: 20px;
 }
 
 .search input {
     padding: 5px 10px;
+
     border: none;
     border-radius: 20px;
+
     width: 300px;
+
     font-size: 16px;
 }
 
@@ -2296,6 +2387,10 @@ footer {
     color: var(--main-dark-theme-color)
 }
 
+.dark-mode .form-group i{
+    color: var(--main-dark-theme-color)
+}
+
 /*---------------LOG IN---------------*/
 .dark-mode .login-body{
     background-image: var(--bg-dark-theme);
@@ -2339,6 +2434,35 @@ footer {
 }
 
 .dark-mode .tooltip-ul{
+    color: var(--main-dark-theme-color)
+}
+
+/*-----Password reset-----*/
+.dark-mode .password-reset-body, .dark-mode .password-reset-done-body, .dark-mode .password-reset-confirm-body, .dark-mode .password-reset-complete-body{
+    background-image: var(--bg-dark-theme);
+}
+
+.dark-mode .password-reset-header, .dark-mode .password-reset-done-header, .dark-mode .password-reset-confirm-header, .dark-mode .password-reset-complete-header{
+    color: var(--main-dark-theme-color);
+}
+
+.dark-mode .password-reset-body i, .dark-mode .password-reset-done-body i, .dark-mode .password-reset-confirm-body i, .dark-mode .password-reset-complete-body i{
+    color: var(--main-dark-theme-color)
+}
+
+.dark-mode .password-reset-done-message{
+    border: 3px solid var(--second-dark-theme-color);
+    color: var(--dark-theme-text-color);
+}
+
+.dark-mode .password-reset-button, .dark-mode .password-reset-confirm-button{
+    color: var(--dark-theme-text-color);
+    border: 3px solid var(--second-dark-theme-color);
+}
+
+.password-reset-button:hover, .password-reset-confirm-button:hover{
+    box-shadow: inset 2px 2px 2px 0.1px var(--dark-theme-text-color);
+
     color: var(--main-dark-theme-color)
 }
 

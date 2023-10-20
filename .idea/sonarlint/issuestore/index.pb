@@ -123,3 +123,11 @@ H
 Store/orders/__init__.py,6\f\6f309693fb8869b7d9e19e45f65aef6588b342e7
 E
 Store/orders/admin.py,8\0\8076141203acd8705cf7af5b87c9b54931e65a60
+j
+:Store/mainpage/templates/mainpage/password-reset-done.html,8\3\8361e763e601093450fb956636b7e0e38523cb08
+n
+>Store/mainpage/templates/mainpage/password_reset_complete.html,b\a\baca0756cd58f0d52f367758238e99f7f7de040c
+m
+=Store/mainpage/templates/mainpage/password_reset_confirm.html,2\b\2b352b999664d2338ffda09fcff5674c1ae1eda3
+e
+5Store/mainpage/templates/mainpage/password-reset.html,4\7\47590a3615b6f037437c6344c1ba9ba0f63bf0aa

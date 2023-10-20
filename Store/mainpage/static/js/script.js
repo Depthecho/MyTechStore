@@ -15,7 +15,8 @@ function darkmode(){
 }
 
  if ((window.location.href.split('/')[3] + window.location.href.split('/')[4]) === "settings?setting=appearance"
-     || window.location.href.split('/')[3] === "login" || window.location.href.split('/')[3] === "signup" ){
+     || window.location.href.split('/')[3] === "login" || window.location.href.split('/')[3] === "signup" ||
+     window.location.href.split('/')[3] === "password-reset" || window.location.href.split('/')[3] === "password-reset-confirm"){
     document.querySelector('.swap-theme').addEventListener('click', darkmode)
     }
 
@@ -23,7 +24,8 @@ function darkmode(){
 function onload(){
 if (localStorage.getItem("darkmode") == "true"){
     if ((window.location.href.split('/')[3] + window.location.href.split('/')[4]) === "settings?setting=appearance"
-     || window.location.href.split('/')[3] === "login" || window.location.href.split('/')[3] === "signup" ){
+     || window.location.href.split('/')[3] === "login" || window.location.href.split('/')[3] === "signup" ||
+     window.location.href.split('/')[3] === "password-reset" || window.location.href.split('/')[3] === "password-reset-confirm"){
         document.getElementsByClassName("swap-theme")[0].children[0].classList.toggle('fa-sun')
         document.getElementsByClassName("swap-theme")[0].children[0].classList.toggle('fa-moon')
         }
