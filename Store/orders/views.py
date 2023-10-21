@@ -11,8 +11,6 @@ from user_profile.models import UserProfile
 @login_required(login_url='login-page')
 def orders_page(request):
     user = request.user
-    # Receiving user orders
-    orders = Order.objects.order_by('-order_date')
 
     # Working with the display of the user's avatar
     try:
@@ -33,6 +31,9 @@ def orders_page(request):
         orders = paginator.page(1)
     except EmptyPage:
         orders = paginator.page(paginator.num_pages)
+
+    # Receiving user orders
+    orders = Order.objects.filter(user=user).order_by('-order_date')
 
     context = {
         'profile': profile,

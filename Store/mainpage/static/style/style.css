@@ -15,8 +15,13 @@
 *{
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Sometype Mono', monospace;
+
+    font-weight: 500;
 }
 
 
@@ -24,8 +29,6 @@
 /*--------------------LIGHT THEME--------------------*/
 body{
     background-image: var(--bg-light-theme-color);
-    background-size: cover;
-    background-position: center;
 }
 
 /*---------------SIGN UP---------------*/
@@ -451,7 +454,7 @@ body{
 }
 
 .password-reset-header, .password-reset-done-header, .password-reset-confirm-header, .password-reset-complete-header{
-    color: var(--main-light-theme-color);
+    color: var(--second-light-theme-color);
 }
 
 .password-reset-body i, .password-reset-done-body i, .password-reset-confirm-body i, .password-reset-complete-body i{
@@ -498,11 +501,21 @@ body{
     border-radius: 20px;
 }
 
+.password-reset-button a, .password-reset-confirm-button a{
+    text-decoration: none;
+
+    color: var(--dark-theme-text-color)
+}
+
 .password-reset-button:hover, .password-reset-confirm-button:hover{
     cursor: pointer;
 
     box-shadow: inset 2px 2px 2px 0.1px var(--dark-theme-text-color);
 
+    color: var(--main-light-theme-color)
+}
+
+.password-reset-button:hover a, .password-reset-confirm-button:hover a{
     color: var(--main-light-theme-color)
 }
 
@@ -1204,7 +1217,7 @@ body{
 
     background-color: var(--main-light-theme-color);
     
-    border: 1px solid var(--dark-theme-text-color);
+    /*border: 1px solid var(--dark-theme-text-color);*/
     border-radius: 20px;
 }
 
@@ -1228,10 +1241,12 @@ body{
 }
 
 .products button:hover{
-    background-color: var(--dark-theme-text-color);
+    box-shadow: inset -5px -5px 10px -4px #864E3A;
 
-    border: 1px solid var(--main-light-theme-color);
+    /*border: 1px solid var(--main-light-theme-color); */
     cursor: pointer;
+
+    color: var(--dark-theme-text-color)
 }
 
 .products-list button:hover{
@@ -1362,7 +1377,8 @@ body{
     color: var(--light-theme-text-color);
     background-color: var(--main-light-theme-color);
 
-    border: 3px solid var(--second-light-theme-color);
+    /*border: 3px solid var(--second-light-theme-color);*/
+    border: none;
     border-radius: 40px;
 }
 
@@ -2358,6 +2374,10 @@ footer {
     background-image: var(--bg-dark-theme);
 }
 
+.dark-mode .signup-body .swap-theme{
+    color: var(--main-dark-theme-color);
+}
+
 .dark-mode h1{
     color: var(--main-dark-theme-color)
 }
@@ -2437,6 +2457,10 @@ footer {
     color: var(--main-dark-theme-color)
 }
 
+.dark-mode .login-body .swap-theme i{
+    color: var(--main-dark-theme-color)
+}
+
 /*-----Password reset-----*/
 .dark-mode .password-reset-body, .dark-mode .password-reset-done-body, .dark-mode .password-reset-confirm-body, .dark-mode .password-reset-complete-body{
     background-image: var(--bg-dark-theme);
@@ -2460,9 +2484,13 @@ footer {
     border: 3px solid var(--second-dark-theme-color);
 }
 
-.password-reset-button:hover, .password-reset-confirm-button:hover{
+.dark-mode .password-reset-button:hover, .dark-mode .password-reset-confirm-button:hover{
     box-shadow: inset 2px 2px 2px 0.1px var(--dark-theme-text-color);
 
+    color: var(--main-dark-theme-color)
+}
+
+.dark-mode .password-reset-button:hover a,.dark-mode .password-reset-confirm-button:hover a{
     color: var(--main-dark-theme-color)
 }
 
@@ -2621,8 +2649,8 @@ footer {
 
 .dark-mode .products button, .dark-mode .products form button{
     background-color: var(--main-dark-theme-color);
-    
-    border: 1px solid var(--dark-theme-text-color);
+
+    border: none;
 
     color: var(--dark-theme-text-color)
 }
@@ -2636,11 +2664,11 @@ footer {
 }
 
 .dark-mode .products button:hover{
-    background-color: var(--dark-theme-text-color);
+    box-shadow: inset -5px -5px 10px -4px #623A7A;
 
-    border: 1px solid var(--second-dark-theme-color);
+    border: none;
 
-    color: var(--main-dark-theme-color)
+    color: var(--dark-theme-text-color)
 }
 
 .dark-mode .products-list button:hover{
@@ -3025,6 +3053,6 @@ footer {
     color: var(--main-dark-theme-color)
 }
 
-.non-user-alert a:hover{
+.dark-mode .non-user-alert a:hover{
     color: var(--second-dark-theme-color)
 }
