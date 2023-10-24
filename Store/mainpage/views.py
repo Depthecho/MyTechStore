@@ -101,7 +101,7 @@ def store_page(request):
         request.session['items_per_page'] = items_per_page
     else:
         # If the value is not specified in the form, use the stored value in the session
-        items_per_page = request.session.get('items_per_page', 12)
+        items_per_page = request.session.get('items_per_page', 9)
 
     paginator = Paginator(products, items_per_page)
     page = request.GET.get('page')
@@ -113,7 +113,12 @@ def store_page(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    context = {'products': products, 'categories': categories, 'profile': profile, 'search_query': search_query}
+    context = {'products': products,
+               'categories': categories,
+               'profile': profile,
+               'search_query': search_query,
+               'items_per_page': items_per_page,
+               'view_mode': view_mode}
     return render(request, template_name, context)
 
 

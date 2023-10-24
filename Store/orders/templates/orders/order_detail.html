@@ -16,15 +16,16 @@
                 <p>Date: {{ order.order_date }}</p>
                 <h3>Ordered Products:</h3>
                 <ul>
-                    {% for product in order.products.all %}
-                        <li>
-                            <h4>{{ product.name }}</h4>
-                            {% if product.image %}
-                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                            {% endif %}
-                            <p><b>Category:</b> {{ product.category }}</p>
-                            <p><b>Price:</b> ${{ product.price }}</p>
-                        </li>
+                    {% for order_product in order_products %}
+                    <li>
+                        <h4>{{ order_product.product.name }}</h4>
+                        {% if order_product.product.image %}
+                        <img src="{{ order_product.product.image.url }}" alt="{{ order_product.product.name }}">
+                        {% endif %}
+                        <p><b>Category:</b> {{ order_product.product.category }}</p>
+                        <p><b>Price:</b> ${{ order_product.product.price }}</p>
+                        <p><b>Quantity:</b> {{ order_product.quantity }}</p>
+                    </li>
                     {% endfor %}
                 </ul>
             </div>

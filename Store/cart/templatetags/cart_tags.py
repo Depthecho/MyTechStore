@@ -14,5 +14,5 @@ def cart_total_items(user):
 def total_price(cart_items):
     total = 0
     for cart_item in cart_items:
-        total += cart_item.product.price * cart_item.quantity
+        total += cart_item.product.price * cart_item.cart_quantity
     return total

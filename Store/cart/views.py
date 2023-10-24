@@ -20,7 +20,7 @@ def add_to_cart(request, product_id):
 
     if not created:
         # If the product was already in the cart, we increase its quantity by 1
-        cart_item.quantity += 1
+        cart_item.cart_quantity += 1
         cart_item.save()
 
     return redirect('store-page')
@@ -36,7 +36,7 @@ def cart_page(request):
         profile = None
 
     cart_items = CartItem.objects.filter(user=request.user)
-    total_quantity = cart_items.aggregate(total_quantity=Sum('quantity'))['total_quantity']
+    total_quantity = cart_items.aggregate(total_quantity=Sum('cart_quantity'))['total_quantity']
 
     items_per_page = 12
 
@@ -59,20 +59,24 @@ def cart_page(request):
 @login_required(login_url='login-page')
 def update_cart(request, product_id):
     if request.method == 'POST':
-        # Get a new quantity of the available product
-        new_quantity = request.POST.get('quantity')
+        # Get the new cart_quantity from the form
+        new_cart_quantity = request.POST.get('cart_quantity')
 
-        cart_item = get_object_or_404(CartItem, product_id=product_id)
+        # Find the correct CartItem based on the product_id
+        cart_item = CartItem.objects.filter(product_id=product_id, user=request.user).first()
 
-        # Getting the quantity of the available product in the database
-        available_quantity = cart_item.product.quantity
+        if cart_item:
+            # Getting the cart_quantity of the available product in the database
+            available_quantity = cart_item.product.quantity
 
-        # checking for compliance with the quantity of goods
-        if int(new_quantity) <= available_quantity:
-            cart_item.quantity = new_quantity
-            cart_item.save()
+            # Check if the new cart_quantity is valid
+            if 1 <= int(new_cart_quantity) <= available_quantity:
+                cart_item.cart_quantity = new_cart_quantity
+                cart_item.save()
+            else:
+                messages.error(request, 'The requested cart_quantity exceeds the available quantity.')
         else:
-            messages.error(request, 'The requested quantity exceeds the available quantity.')
+            messages.error(request, 'Cart item not found for the given product.')
 
         return redirect('cart')
 
@@ -86,9 +90,9 @@ def remove_from_cart(request, product_id):
     # Trying to find an existing product in the user's cart
     try:
         cart_item = CartItem.objects.get(user=user, product=product)
-        if cart_item.quantity > 1:
-            # If the user has more than one copy of the product, reduce the quantity by 1
-            cart_item.quantity -= 1
+        if cart_item.cart_quantity > 1:
+            # If the user has more than one copy of the product, reduce the cart_quantity by 1
+            cart_item.cart_quantity -= 1
             cart_item.save()
         else:
             # If the user has only one copy of the product, we remove it from the basket
