@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404,render, redirect
 from django.contrib.auth import login, authenticate, logout
-from .forms import RegistrationForm, ProductCommentForm
+from .forms import RegistrationForm, ProductCommentForm, ProductUpdateForm
 from .models import Product, Category, ProductComment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from user_profile.models import UserProfile
+from django.contrib.auth.models import Group
 
 
 # The registration function
@@ -65,11 +66,17 @@ def store_page(request):
 
     # Working with the display of the user's avatar
     profile = None
+    is_manager = False
+
     if request.user.is_authenticated:
         try:
             profile = UserProfile.objects.get(user=request.user)
         except UserProfile.DoesNotExist:
             pass
+
+        # Check if the user is part of the 'Manager' group
+        is_manager = user.groups.filter(name='Manager').exists()
+    print(is_manager)
 
     # Working with the search bar
     search_query = request.GET.get('search')
@@ -118,7 +125,8 @@ def store_page(request):
                'profile': profile,
                'search_query': search_query,
                'items_per_page': items_per_page,
-               'view_mode': view_mode}
+               'view_mode': view_mode,
+               'is_manager': is_manager}
     return render(request, template_name, context)
 
 
@@ -163,3 +171,37 @@ def product_detail(request, product_id):
         'comments': comments,
     }
     return render(request, 'mainpage/product_detail.html', context)
+
+
+@login_required(login_url='login-page')
+def update_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.method == 'POST':
+        form = ProductUpdateForm(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            # Redirect to the product detail page or any other desired page
+            return redirect('store-page')
+    else:
+        form = ProductUpdateForm(instance=product)
+
+    return render(request, 'mainpage/update-product.html', {'form': form})
+
+
+@login_required(login_url='login-page')
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+
+    view_mode = request.GET.get('view_mode', 'grid')
+
+    if view_mode == 'list':
+        template_name = 'mainpage/store-page-list.html'
+    else:
+        template_name = 'mainpage/store-page.html'
+
+    if request.method == 'POST':
+        product.delete()
+        return redirect('store-page')
+
+    return render(request, template_name, {'product': product})

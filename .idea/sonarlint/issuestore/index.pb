@@ -131,3 +131,5 @@ m
 =Store/mainpage/templates/mainpage/password_reset_confirm.html,2\b\2b352b999664d2338ffda09fcff5674c1ae1eda3
 e
 5Store/mainpage/templates/mainpage/password-reset.html,4\7\47590a3615b6f037437c6344c1ba9ba0f63bf0aa
+e
+5Store/mainpage/templates/mainpage/update-product.html,6\e\6eb663ea4ab0cdb8e552c29cf3b4632a9530a3d6

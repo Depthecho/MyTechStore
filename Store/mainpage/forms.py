@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import password_validation
 from django.core.exceptions import ValidationError
-from .models import CustomUser, ProductComment
+from .models import CustomUser, ProductComment, Product
 
 
 # The user registration form
@@ -72,3 +72,10 @@ class ProductCommentForm(forms.ModelForm):
     class Meta:
         model = ProductComment
         fields = ['rating', 'comment']
+
+
+# Product update form
+class ProductUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'description', 'category', 'price', 'discount']

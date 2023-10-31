@@ -23,5 +23,9 @@ urlpatterns = [
         template_name='mainpage/password_reset_confirm.html'), name='password_reset_confirm'),
     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(
         template_name='mainpage/password_reset_complete.html'), name='password_reset_complete'),
+
+    # Manager work
+    path('update-product/<int:product_id>/', views.update_product, name='update-product'),
+    path('delete-product/<int:product_id>/', views.delete_product, name='delete-product')
 ]
 

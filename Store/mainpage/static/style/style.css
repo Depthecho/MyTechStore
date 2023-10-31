@@ -1147,7 +1147,7 @@ body{
 }
 
 
-.products i{
+.products i.favorite-good{
     position: absolute;
 
     font-size: 30px;
@@ -1161,7 +1161,35 @@ body{
     z-index: 1;
 }
 
-.products-list i{
+.products i.bx-revision{
+    position: absolute;
+
+    font-size: 30px;
+
+    right: 10px;
+    top: 60px;
+
+    display: none;
+
+    color: green;
+    z-index: 1;
+}
+
+.products i.bx-x{
+    position: absolute;
+
+    font-size: 40px;
+
+    right: 5px;
+    top: 110px;
+
+    display: none;
+
+    color: red;
+    z-index: 1;
+}
+
+.products-list i.favorite-good{
     position: absolute;
 
     font-size: 30px;
@@ -1217,7 +1245,6 @@ body{
 
     background-color: var(--main-light-theme-color);
     
-    /*border: 1px solid var(--dark-theme-text-color);*/
     border-radius: 20px;
 }
 
@@ -1236,24 +1263,23 @@ body{
 
     background-color: var(--main-light-theme-color);
     
-    border: 1px solid var(--dark-theme-text-color);
     border-radius: 20px;
 }
 
 .products button:hover{
     box-shadow: inset -5px -5px 10px -4px #864E3A;
 
-    /*border: 1px solid var(--main-light-theme-color); */
     cursor: pointer;
 
     color: var(--dark-theme-text-color)
 }
 
 .products-list button:hover{
-    background-color: var(--dark-theme-text-color);
+    color: var(--dark-theme-text-color);
 
-    border: 1px solid var(--main-light-theme-color);
     cursor: pointer;
+
+    box-shadow: inset -5px -5px 10px -4px #864E3A;
 }
 
 .products button a{
@@ -1363,6 +1389,46 @@ body{
     display: block;
 
     margin-top: 20px;
+}
+
+.product-detail-container form.update-product-form input{
+    width: 100%;
+}
+
+.product-detail-container form.update-product-form p{
+    display: block;
+
+    margin-top: 20px;
+}
+
+.product-detail-container form.update-product-form textarea{
+    width: 100%;
+
+    resize: none;
+
+    border: 2px solid var(--second-light-theme-color);
+}
+
+.product-detail-container form.update-product-form button{
+    display: block;
+
+    margin-top: 20px;
+    margin-left: 20px;
+
+    padding: 7px 20px;
+
+    border: 2px solid var(--second-light-theme-color);
+    border-radius: 20px;
+
+    background-color: transparent;
+}
+
+.product-detail-container form.update-product-form button:hover{
+    background-color: var(--main-light-theme-color);
+
+    color: var(--dark-theme-text-color);
+
+    box-shadow: inset 3px 3px 3px 0.1px var(--dark-theme-text-color);
 }
 
 .buy-button{
@@ -1927,8 +1993,12 @@ body{
 
 .profile-username{
     width: 300px;
+
     font-size: 36px;
+
     margin: 10px 0px;
+
+    color: var(--dark-theme-text-color)
 }
 
 .profile-avatar{
@@ -1985,6 +2055,8 @@ body{
     width: 300px;
 
     margin-top: 30px;
+
+    color: var(--dark-theme-text-color);
 }
 
 /*-----Update Profile-----*/
@@ -2639,26 +2711,18 @@ footer {
     color: var(--second-dark-theme-color)
 }
 
-.dark-mode .products i{
-    color: var(--main-dark-theme-color);
-}
-
-.dark-mode .products-list i{
+.dark-mode .products-list i.favorite-good{
     color: var(--main-dark-theme-color);
 }
 
 .dark-mode .products button, .dark-mode .products form button{
     background-color: var(--main-dark-theme-color);
 
-    border: none;
-
     color: var(--dark-theme-text-color)
 }
 
 .dark-mode .products-list button, .dark-mode .products-list form button{
     background-color: var(--main-dark-theme-color);
-    
-    border: 1px solid var(--dark-theme-text-color);
 
     color: var(--dark-theme-text-color)
 }
@@ -2666,17 +2730,13 @@ footer {
 .dark-mode .products button:hover{
     box-shadow: inset -5px -5px 10px -4px #623A7A;
 
-    border: none;
-
     color: var(--dark-theme-text-color)
 }
 
 .dark-mode .products-list button:hover{
-    background-color: var(--dark-theme-text-color);
+    box-shadow: inset -5px -5px 10px -4px #623A7A;
 
-    border: 1px solid var(--second-dark-theme-color);
-
-    color: var(--main-dark-theme-color)
+    color: var(--dark-theme-text-color)
 }
 
 .dark-mode .products button a{
@@ -2732,6 +2792,22 @@ footer {
     background-color: var(--dark-theme-text-color);
 
     color: var(--main-dark-theme-color)
+}
+
+.dark-mode .product-detail-container form.update-product-form textarea{
+    border: 2px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .product-detail-container form.update-product-form button{
+    border: 2px solid var(--second-dark-theme-color);
+}
+
+.dark-mode .product-detail-container form.update-product-form button:hover{
+    background-color: var(--main-dark-theme-color);
+
+    color: var(--dark-theme-text-color);
+
+    box-shadow: inset 3px 3px 3px 0.1px var(--dark-theme-text-color);
 }
 
 /*-----Paginator-----*/

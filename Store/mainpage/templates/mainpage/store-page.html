@@ -50,15 +50,15 @@
                         var maxValueInput = document.getElementById('price_max');
 
                         noUiSlider.create(priceSlider, {
-                            start: [1, 5000],
+                            start: [50, 1000],
                             connect: true,
                             range: {
-                                'min': 1,
-                                'max': 5000
+                                'min': 50,
+                                'max': 1000
                             }
                         });
 
-                        var priceValues = [1, 5000];
+                        var priceValues = [50, 1000];
 
                         priceSlider.noUiSlider.on('update', function (values, handle) {
                             priceValues[handle] = parseInt(values[handle]);
@@ -122,6 +122,14 @@
                     <a href="{% url 'remove-from-favorite' product.id %}"><i class="favorite-good bx bxs-star"></i></a>
                     {% else %}
                     <a href="{% url 'add-to-favorite' product.id %}"><i class="favorite-good bx bx-star"></i></a>
+                    {% endif %}
+                    {% if is_manager %}
+                    <a href="{% url 'update-product' product.id %}"><i class='bx bx-revision'></i></a>
+                    <form method="post" class="delete-product-form" action="{% url 'delete-product' product.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                       <a href="#" onclick="this.parentNode.submit(); return false;"><i class='bx bx-x'></i></a>
+                    </form>
                     {% endif %}
                     <p><b>Category:</b> {{ product.category }}</p>
                     <p><b>Price:</b> ${{ product.price }}</p>
