@@ -79,3 +79,9 @@ class ProductUpdateForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['name', 'description', 'category', 'price', 'discount']
+
+
+class ProductCreateForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'slug', 'image', 'description', 'category', 'quantity', 'price', 'discount']

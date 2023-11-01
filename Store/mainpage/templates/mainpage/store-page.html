@@ -78,6 +78,9 @@
             </div>
             <div class="store-page-container{% if products|length < 9 %} height-1300{% endif %}">
                 <div class="products-header">
+                    {% if is_manager %}
+                    <button class="create-product-button"><a href="{% url 'create-product' %}">Create a product</a></button>
+                    {% endif %}
                     <form method="get" class="items-per-page">
                         <label for="itemsPerPage">Items per Page:</label>
                         <select id="itemsPerPage" name="itemsPerPage">

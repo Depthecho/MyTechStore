@@ -133,3 +133,5 @@ e
 5Store/mainpage/templates/mainpage/password-reset.html,4\7\47590a3615b6f037437c6344c1ba9ba0f63bf0aa
 e
 5Store/mainpage/templates/mainpage/update-product.html,6\e\6eb663ea4ab0cdb8e552c29cf3b4632a9530a3d6
+e
+5Store/mainpage/templates/mainpage/create-product.html,e\4\e49ca3aa24e770fd1c7fb7a008d209af32eb071c

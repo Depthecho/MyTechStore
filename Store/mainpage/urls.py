@@ -26,6 +26,7 @@ urlpatterns = [
 
     # Manager work
     path('update-product/<int:product_id>/', views.update_product, name='update-product'),
-    path('delete-product/<int:product_id>/', views.delete_product, name='delete-product')
+    path('delete-product/<int:product_id>/', views.delete_product, name='delete-product'),
+    path('create-product', views.create_product, name='create-product'),
 ]
 

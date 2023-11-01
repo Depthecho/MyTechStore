@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404,render, redirect
 from django.contrib.auth import login, authenticate, logout
-from .forms import RegistrationForm, ProductCommentForm, ProductUpdateForm
+from .forms import RegistrationForm, ProductCommentForm, ProductUpdateForm, ProductCreateForm
 from .models import Product, Category, ProductComment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from user_profile.models import UserProfile
@@ -205,3 +205,15 @@ def delete_product(request, product_id):
         return redirect('store-page')
 
     return render(request, template_name, {'product': product})
+
+
+def create_product(request):
+    if request.method == 'POST':
+        form = ProductCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('store-page')
+    else:
+        form = ProductCreateForm()
+
+    return render(request, 'mainpage/create-product.html', {'form': form})

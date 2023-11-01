@@ -78,6 +78,9 @@
             </div>
             <div class="store-page-container{% if products|length < 9 %} height-1300{% endif %}">
                 <div class="products-header">
+                    {% if is_manager %}
+                    <button class="create-product-button"><a href="{% url 'create-product' %}">Create a product</a></button>
+                    {% endif %}
                     <form method="get" class="items-per-page">
                         <label for="itemsPerPage">Items per Page:</label>
                         <select id="itemsPerPage" name="itemsPerPage">
@@ -122,6 +125,14 @@
                     <a href="{% url 'remove-from-favorite' product.id %}"><i class="favorite-good bx bxs-star"></i></a>
                     {% else %}
                     <a href="{% url 'add-to-favorite' product.id %}"><i class="favorite-good bx bx-star"></i></a>
+                    {% endif %}
+                    {% if is_manager %}
+                    <a href="{% url 'update-product' product.id %}"><i class='bx bx-revision'></i></a>
+                    <form method="post" class="delete-product-form" action="{% url 'delete-product' product.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                       <a href="#" onclick="this.parentNode.submit(); return false;"><i class='bx bx-x'></i></a>
+                    </form>
                     {% endif %}
                     <p><b>Category:</b> {{ product.category }}</p>
                     <p><b>Price:</b> ${{ product.price }}</p>
