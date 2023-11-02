@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     # Main
     path('', views.store_page, name='store-page'),
-    path('product/<int:product_id>/', views.product_detail, name='product-detail'),
+    path('product/<slug:product_slug>/', views.product_detail, name='product-detail'),
 
 
     # Auth

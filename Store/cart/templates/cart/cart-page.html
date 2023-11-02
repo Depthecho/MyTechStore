@@ -19,7 +19,7 @@
                 {% if cart_items %}
                 {% for cart_item in cart_items %}
                 <div class="products cart-products">
-    <h2><a href="{% url 'product-detail' cart_item.product.id %}">{{ cart_item.product.name|slice:":30" }}...</a></h2>
+    <h2><a href="{% url 'product-detail' cart_item.product.slug %}">{{ cart_item.product.name|slice:":30" }}...</a></h2>
     {% if cart_item.product.image %}
     <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.name }}">
     {% endif %}

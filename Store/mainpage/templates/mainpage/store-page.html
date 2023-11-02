@@ -117,7 +117,7 @@
                 </div>
                 {% for product in products %}
                 <div class="products">
-                    <h2><a href="{% url 'product-detail' product.id %}">{{ product.name }}</a></h2>
+                    <h2><a href="{% url 'product-detail' product.slug %}">{{ product.name }}</a></h2>
                     {% if product.image %}
                     <img src="{{ product.image.url }}" alt="{{ product.name }}">
                     {% endif %}

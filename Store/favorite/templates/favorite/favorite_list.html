@@ -25,7 +25,7 @@
                         {% else %}
                         <a href="{% url 'add-to-favorite' product.id %}"><i class="favorite-good bx bx-star"></i></a>
                         {% endif %}
-                        <h2>{{ product.name }}</h2>
+                        <h2><a href="{% url 'product-detail' product.slug %}">{{ product.name }}</a></h2>
                         {% if product.image %}
                         <img src="{{ product.image.url }}" alt="{{ product.name }}">
                         {% endif %}

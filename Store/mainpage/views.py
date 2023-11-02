@@ -76,7 +76,6 @@ def store_page(request):
 
         # Check if the user is part of the 'Manager' group
         is_manager = user.groups.filter(name='Manager').exists()
-    print(is_manager)
 
     # Working with the search bar
     search_query = request.GET.get('search')
@@ -131,8 +130,8 @@ def store_page(request):
 
 
 # The function of displaying each product separately
-def product_detail(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
+def product_detail(request, product_slug):
+    product = get_object_or_404(Product, slug=product_slug)
     profile = None
     user = request.user
     user_comment = None
@@ -156,7 +155,7 @@ def product_detail(request, product_id):
                 comment.user = request.user
                 comment.product = product
                 comment.save()
-                return redirect('product-detail', product_id=product_id)
+                return redirect('product-detail', product_slug=product_slug)
         else:
             form = ProductCommentForm()
     else:
