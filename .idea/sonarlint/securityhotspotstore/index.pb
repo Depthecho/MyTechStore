@@ -135,3 +135,5 @@ e
 5Store/mainpage/templates/mainpage/update-product.html,6\e\6eb663ea4ab0cdb8e552c29cf3b4632a9530a3d6
 e
 5Store/mainpage/templates/mainpage/create-product.html,e\4\e49ca3aa24e770fd1c7fb7a008d209af32eb071c
+[
++Store/mainpage/templatetags/ratings_tags.py,0\b\0b38540a2c9167b28f07582284b613c1e11a751d

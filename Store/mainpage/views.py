@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 from django.shortcuts import get_object_or_404,render, redirect
 from django.contrib.auth import login, authenticate, logout
 from .forms import RegistrationForm, ProductCommentForm, ProductUpdateForm, ProductCreateForm
@@ -97,6 +98,10 @@ def store_page(request):
         products = products.order_by('price')
     elif sort_by == 'price_high':
         products = products.order_by('-price')
+    elif sort_by == 'rating_high':
+        products = Product.objects.annotate(avg_rating=Avg('productcomment__rating')).order_by('-avg_rating', 'price')
+    elif sort_by == 'rating_low':
+        products = Product.objects.annotate(avg_rating=Avg('productcomment__rating')).order_by('avg_rating', 'price')
 
     if category != 'all':
         products = products.filter(category__name=category)
