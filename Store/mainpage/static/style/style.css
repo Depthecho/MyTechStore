@@ -1430,7 +1430,8 @@ body{
 }
 
 .product-detail-container h1{
-    height: 30px;
+    display: block;
+
     font-size: 36px;
 }
 
@@ -1441,7 +1442,7 @@ body{
 .product-detail-container p{
     display: block;
 
-    margin: 50px 20px 0px 20px;
+    margin: 30px 20px 0px 20px;
 }
 
 .product-detail-container form{
@@ -1770,6 +1771,15 @@ body{
 
 .cart-purchase form{
     margin-top: 20px;
+}
+
+.cart-purchase form select{
+    width: 90%;
+
+    border: 2px solid var(--second-light-theme-color);
+    border-radius: 20px;
+
+    margin-bottom: 20px;
 }
 
 .cart-purchase form button{
@@ -2936,6 +2946,15 @@ footer {
     text-decoration: none;
 
     color: var(--dark-theme-text-color);
+}
+
+.dark-mode .cart-purchase form select{
+    width: 90%;
+
+    border: 2px solid var(--second-dark-theme-color);
+    border-radius: 20px;
+
+    margin-bottom: 20px;
 }
 
 .dark-mode .cart-purchase form button:hover{

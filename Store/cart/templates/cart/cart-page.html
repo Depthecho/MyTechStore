@@ -44,6 +44,10 @@
                 <p><b>Total Price:</b> ${{ cart_items|total_price }}</p>
                 <form action="#" method="post">
                     {% csrf_token %}
+                    <select name="payment-method" id="payment-method">
+                        <option value="cash">With cash</option>
+                        <option value="card">With card</option>
+                    </select>
                     <button type="submit" class="purchase-button"><a href="{% url 'add_to_order' %}">Purchase All</a></button>
                 </form>
                 {% endif %}

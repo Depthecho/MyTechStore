@@ -154,9 +154,9 @@
             <div class="pagination">
     <ul class="container">
         {% if products.has_previous %}
-            <li><a href="?page={{ products.previous_page_number }}&view_mode={{ view_mode }}&itemsPerPage={{ items_per_page }}" class="btn page-link">&lt;<<</a></li>
+            <li><a href="?page={{ products.previous_page_number }}&view_mode={{ view_mode }}&itemsPerPage={{ items_per_page }}" class="btn page-link">&lt;<</a></li>
         {% endif %}
-        {% if products.number > 2 %}
+        {% if products.number > 3 %}
             <li><a href="?page=1&view_mode={{ view_mode }}&itemsPerPage={{ items_per_page }}" class="btn page-link">1</a></li>
             <li class="btn page-link">...</li>
         {% endif %}
@@ -172,7 +172,7 @@
             <li><a href="?page={{ products.paginator.num_pages }}&view_mode={{ view_mode }}&itemsPerPage={{ items_per_page }}" class="btn page-link">{{ products.paginator.num_pages }}</a></li>
         {% endif %}
         {% if products.has_next %}
-            <li><a href="?page={{ products.next_page_number }}&view_mode={{ view_mode }}&itemsPerPage={{ items_per_page }}" class="btn page-link">>>&gt;</a></li>
+            <li><a href="?page={{ products.next_page_number }}&view_mode={{ view_mode }}&itemsPerPage={{ items_per_page }}" class="btn page-link">>&gt;</a></li>
         {% endif %}
     </ul>
 </div>

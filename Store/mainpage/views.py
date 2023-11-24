@@ -53,7 +53,7 @@ def logout_page(request):
 
 # The function of displaying the main page of the store
 def store_page(request):
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('name')
     categories = Category.objects.all()
     user = request.user
 
