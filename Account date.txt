@@ -1,0 +1,13 @@
+Admin:
+login: admin
+password: 3212223
+
+Manager:
+login: manager
+password: Ex_di3212223
+
+Default user:
+login: user1
+password: Ex_di3212223
+
+
