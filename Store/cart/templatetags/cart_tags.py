@@ -14,5 +14,10 @@ def cart_total_items(user):
 def total_price(cart_items):
     total = 0
     for cart_item in cart_items:
-        total += cart_item.product.price * cart_item.cart_quantity
+        # Check if the product has a discount
+        if cart_item.product.discount:
+            discounted_price = cart_item.product.price * (1 - cart_item.product.discount / 100)
+            total += discounted_price * cart_item.cart_quantity
+        else:
+            total += cart_item.product.price * cart_item.cart_quantity
     return total

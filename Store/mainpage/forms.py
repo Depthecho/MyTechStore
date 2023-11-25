@@ -78,7 +78,7 @@ class ProductCommentForm(forms.ModelForm):
 class ProductUpdateForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'category', 'price', 'discount']
+        fields = ['name', 'description', 'category', 'quantity', 'price', 'discount']
 
 
 class ProductCreateForm(forms.ModelForm):

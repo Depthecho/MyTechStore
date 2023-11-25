@@ -54,6 +54,8 @@ def add_to_order(request):
 
     for cart_item in cart_items:
         product = cart_item.product
+        product.quantity -= cart_item.cart_quantity
+        product.save()
         # Check if the product ID is not already in the list
         if product.id not in product_ids:
             order.products.add(product)

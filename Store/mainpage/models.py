@@ -1,3 +1,4 @@
+from _decimal import Decimal
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils import timezone
@@ -24,6 +25,14 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def discounted_price(self):
+        if self.discount is not None and 0 < self.discount < 100:
+            discount_percent = Decimal(self.discount) / Decimal(100)
+            discounted_amount = self.price * discount_percent
+            return self.price - discounted_amount
+        return self.price
 
 
 # User creation model

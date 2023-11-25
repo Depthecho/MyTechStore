@@ -138,7 +138,11 @@
                     </form>
                     {% endif %}
                     <p><b>Category:</b> {{ product.category }}</p>
+                    {% if product.discount %}
+                    <p><b>Price:</b> <del>${{ product.price }}</del> <span style="color: red;">${{ product.discounted_price|floatformat:2 }}</span></p>
+                    {% else %}
                     <p><b>Price:</b> ${{ product.price }}</p>
+                    {% endif %}
                      <p><b>Rating:</b> {% calculate_average_rating product.id %}</p>
                     {% if product.quantity > 0 %}
                     <form method="post" action="{% url 'add-to-cart' product.id %}">
